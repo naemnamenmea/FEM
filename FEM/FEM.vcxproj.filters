@@ -23,6 +23,16 @@
     <Filter Include="Header Files\Debug Tools">
       <UniqueIdentifier>{faec3044-4483-41b2-8e49-08d9aa28e402}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2e3e8131-825d-411c-874a-20e32c86bb2c}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Misc\src">
+      <UniqueIdentifier>{4d3223ee-c7bb-424e-aa9f-26c7c80537ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\src">
+      <UniqueIdentifier>{a042cad9-40fd-459d-8850-581125048539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests3dIntegr.cpp">
@@ -38,13 +48,31 @@
     <ClCompile Include="tests2dIntegr.cpp">
       <Filter>Tests\src</Filter>
     </ClCompile>
+    <ClCompile Include="tests1dIntegr.cpp">
+      <Filter>Tests\src</Filter>
+    </ClCompile>
+    <ClCompile Include="fem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="app_constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="auxiliary.cpp">
+      <Filter>Header Files\Misc\src</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fem_chekhov_3d_input.cpp">
+      <Filter>Tests\src</Filter>
+    </ClCompile>
+    <ClCompile Include="numeric_math.cpp">
+      <Filter>Math\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tests.hpp">
       <Filter>Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="pretty_print.hpp">
-      <Filter>Header Files\Misc</Filter>
     </ClInclude>
     <ClInclude Include="test_runner.hpp">
       <Filter>Header Files\Debug Tools</Filter>
@@ -75,6 +103,24 @@
     </ClInclude>
     <ClInclude Include="point2d.hpp">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="point1d.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="fem.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stl_containers_read.hpp">
+      <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="stl_containers_write.hpp">
+      <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="material.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="finite_element.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

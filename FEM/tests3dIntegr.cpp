@@ -1,5 +1,7 @@
 // Author: Chekhov Vladimir Valerevich
 
+#include "stdafx.hpp"
+
 #include <iostream>
 #include "GaussIntegr.hpp"
 #include "point3d.hpp"
@@ -10,73 +12,74 @@
 template <typename T>
 T fun3arr(const T* xyz)
 {
-  return xyz[0] * xyz[1] * xyz[2];
+	return (1 + xyz[0]) * xyz[1] * xyz[2];
 }
 
 template <typename T>
 T fun3(T x, T y, T z)
 {
-  return x * y * z;
+	return x * y * z;
 }
 
 template <typename T>
 struct ffun3
 {  // функциональный объект
-  T operator()(T x, T y, T z) const { return x * y * z; }
+	T operator()(T x, T y, T z) const
+	{
+		return (x + 1) * y * z;
+	}
 };
 
 template <typename T>
 T vfun3(point3d<T> v)
 {
-  return v[0] * v[1] * v[2];
+	return v[0] / v[1] * v[2];
 }
 
 template <typename T>
 point3d<T> vfunv(const point3d<T>& v)
 {
-  point3d<T> result(v);
-  result += v;
-  return result;
+	point3d<T> result(v);
+	result += v;
+	return result;
 }
 
 //--------------------------------------------------------------------------
 
 void TestBasic3d()
 {
-  typedef GaussIntegr::real_t real_t;
+	typedef GaussIntegr::real_t real_t;
 
-  // создание объекта, выполн€ющего интегрирование по √ауссу дл€ трЄхмерного
-  // случа€ с пор€дком 4:
-  static const GaussIntegr::fIntegrate<3, 4> integr;
+	// создание объекта, выполн€ющего интегрирование по √ауссу дл€ трЄхмерного
+	// случа€ с пор€дком 4:
+	static const GaussIntegr::fIntegrate<3, 4> integr;
 
-  real_t result(0.);
+	real_t result(0.);
 
-  // выполнение численного интегрировани€:
+	// выполнение численного интегрировани€:
 
-  // с использованием операции +=
+	// с использованием операции +=
 
-  std::cout << integr.ByPlusAssgn_ArrArg(fun3arr<real_t>, result) << '\n';
+	std::cout << integr.ByPlusAssgn_ArrArg(fun3arr<real_t>, result) << '\n';
 
-  /*arg*/  // - тип чего приходитс€ указывать при инстанцировании объекта
-  std::cout << integr.ByPlusAssgn<real_t>(ffun3<real_t>(), result) << '\n';
-  std::cout << integr.ByPlusAssgn<point3d<real_t>>(vfun3<real_t>, result)
-            << '\n';
+	/*arg*/  // - тип чего приходитс€ указывать при инстанцировании объекта
+	std::cout << integr.ByPlusAssgn<real_t>(ffun3<real_t>(), result) << '\n';
+	std::cout << integr.ByPlusAssgn<point3d<real_t>>(vfun3<real_t>, result) << '\n';
+	std::cout << integr.ByPlusAssgn<real_t>(fun3<real_t>, result) << '\n';
 
-  // с использованием операции +
+	// с использованием операции +
 
-  /*ret*/
-  std::cout << integr.ByPlus_ArrArg<real_t>(fun3arr<real_t>) << '\n';
+	/*ret*/
+	std::cout << integr.ByPlus_ArrArg<real_t>(fun3arr<real_t>) << '\n';
 
-  /*arg,ret*/
-  std::cout << integr.ByPlus<real_t, real_t>(ffun3<real_t>()) << '\n';
-  std::cout << integr.ByPlus<point3d<real_t>, real_t>(vfun3<real_t>) << '\n';
+	/*arg,ret*/
+	std::cout << integr.ByPlus<real_t, real_t>(ffun3<real_t>()) << '\n';
+	std::cout << integr.ByPlus<point3d<real_t>, real_t>(vfun3<real_t>) << '\n';
+	std::cout << integr.ByPlus<real_t, real_t>(fun3<real_t>) << '\n';
 
-  // интегрирование вектор-функций:
-  point3d<real_t> v;
-  integr.ByPlusAssgn<point3d<real_t>>(vfunv<real_t>, v);
-  std::cout << v << '\n';
-
-  v = integr.ByPlus<point3d<real_t>, point3d<real_t>>(vfunv<real_t>);
-  std::cout << v << '\n';
+	// интегрирование вектор-функций:
+	point3d<real_t> v;
+	std::cout << integr.ByPlusAssgn<point3d<real_t>>(vfunv<real_t>, v) << '\n';
+	std::cout << integr.ByPlus<point3d<real_t>, point3d<real_t>>(vfunv<real_t>) << '\n';
 }
 //--------------------------------------------------------------------------

@@ -1,3 +1,37 @@
 
-BasedOnStyle: Google
+BasedOnStyle: Google   
+ColumnLimit: 100
+
+AccessModifierOffset: -4
+IndentWidth: 4
+TabWidth: 4
+UseTab: Always
+
+DerivePointerAlignment: false
+PointerAlignment: Left
+
+BinPackArguments: false
+BinPackParameters: false
 BreakBeforeBraces: Allman
+
+AlignAfterOpenBracket: AlwaysBreak
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+SpaceBeforeParens: ControlStatements
+
+IndentCaseLabels: true
+
+SortIncludes: false
+IncludeBlocks: Merge
+IncludeCategories:
+  - Regex: '^["<]stdafx\.h(pp)?[">]'
+    Priority: -1
+  - Regex:           '"([A-Za-z0-9.\/-_])+"'
+    Priority:        1
+  - Regex:           '<([A-Za-z0-9\/-_])+>'
+    Priority:        4
+  - Regex:           '"(\.\.)+([A-Za-z0-9.\/-_])+"'
+    Priority:        2
+  - Regex:           '<([A-Za-z0-9.\/-_])+>'
+    Priority:        3
