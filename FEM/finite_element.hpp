@@ -29,30 +29,26 @@ public:
 		return freedomDegrees;
 	}
 
-	template <size_t DIM>
-	friend std::istream& operator>>(std::istream& is, Node<DIM>& node);
+  /*
+  * example of input:
+  * 1 0. −10. 0. fixed fixed fixed
+  */
+  friend std::istream& operator>>(std::istream& is, Node& node)
+  {
+    std::vector<std::string> _freedomDegrees(node.freedomDegrees.size());
+    is >> node.coord >> _freedomDegrees;
+    for (size_t i = 0; i < node.freedomDegrees.size(); ++i)
+    {
+      node.freedomDegrees[i] = _freedomDegrees[i] == "fixed" ? FEM::DEGREES_OF_FREEDOM::FIXED
+        : FEM::DEGREES_OF_FREEDOM::FREE;
+    }
+    return is;
+  }
 
 private:
 	std::vector<double> coord;
 	std::vector<FEM::DEGREES_OF_FREEDOM> freedomDegrees;
 };
-
-/*
- * example of input:
- * 1 0. −10. 0. fixed fixed fixed
- */
-template <size_t DIM>
-std::istream& operator>>(std::istream& is, Node<DIM>& node)
-{
-	std::vector<std::string> _freedomDegrees(node.freedomDegrees.size());
-	is >> node.coord >> _freedomDegrees;
-	for (size_t i = 0; i < node.freedomDegrees.size(); ++i)
-	{
-		node.freedomDegrees[i] = _freedomDegrees[i] == "fixed" ? FEM::DEGREES_OF_FREEDOM::FIXED
-															   : FEM::DEGREES_OF_FREEDOM::FREE;
-	}
-	return is;
-}
 
 /*
  * 1 dim - 2 nodes
@@ -86,7 +82,7 @@ public:
 	{
 		this->nodeNumbers = nodeNumbers;
 	}
-	void SetMaterial(std::list<Material>::const_iterator material)
+	void SetMaterial(std::unordered_set<Material>::const_iterator material)
 	{
 		this->material = material;
 	}
@@ -101,7 +97,7 @@ public:
 protected:
 	std::string type;
 	std::vector<size_t> nodeNumbers;
-	std::list<Material>::const_iterator material;
+  std::unordered_set<Material>::const_iterator material;
 };
 
 class FiniteElement1d : public FiniteElementBase

@@ -1,6 +1,6 @@
 SRC := $(wildcard *.cpp)
 CXX = g++
-CXXFLAGS = -I. -Wall -std=c++17 -lstdc++fs
+CXXFLAGS = -I. -O2 -Wall -pedantic -pthread -std=c++17
 
 all: main
 

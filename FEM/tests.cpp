@@ -7,9 +7,9 @@ void RunAllTests()
 {
 	TestRunner tr;
 	// Numerical integration tests
-	// RUN_TEST(tr, TestBasic1d);
-	// RUN_TEST(tr, TestBasic2d);
-	// RUN_TEST(tr, TestBasic3d);
+	 RUN_TEST(tr, TestBasic1d);
+	 RUN_TEST(tr, TestBasic2d);
+	 RUN_TEST(tr, TestBasic3d);
 
 	// Input tests
 	RUN_TEST(tr, TestFEMChekhovInputNodes);

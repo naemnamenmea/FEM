@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string_view>
+#include <stdexcept>
 #include "math_constants.hpp"
 
 void TrimFront(std::string_view& sv, char symbol = ' ');

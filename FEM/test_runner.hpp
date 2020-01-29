@@ -84,4 +84,4 @@ private:
 		Assert(x, __assert_equal_private_os.str());                                      \
 	}
 
-#define RUN_TEST(tr, func, ...) tr.RunTest(func, #func, __VA_ARGS__)
+#define RUN_TEST(tr, func, ...) tr.RunTest(func, #func , ## __VA_ARGS__)

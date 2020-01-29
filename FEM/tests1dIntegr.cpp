@@ -28,7 +28,7 @@ struct ffun1
 {  // функциональный объект
 	T operator()(T x) const
 	{
-		return x > 0 ? x : 0;
+		return x + 1;
 	}
 };
 
@@ -54,7 +54,7 @@ void TestBasic1d()
 
 	// создание объекта, выполн€ющего интегрирование по √ауссу дл€ трЄхмерного
 	// случа€ с пор€дком 4:
-	static const GaussIntegr::fIntegrate<1, 4> integr;
+	static const GaussIntegr::fIntegrate<1, 1> integr;
 
 	real_t result(0.);
 

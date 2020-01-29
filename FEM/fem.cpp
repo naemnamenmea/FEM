@@ -251,6 +251,7 @@ void FiniteElementModel<DIM>::ReadGenericFEEntry(
 	finiteElement->SetMaterial(it);
 }
 
+template<>
 void FiniteElementModel<3>::ReadSpecFEEntry(
 	std::istream& is, std::shared_ptr<FiniteElementBase> finiteElement)
 {

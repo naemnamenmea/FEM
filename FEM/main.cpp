@@ -15,7 +15,7 @@
 #include "test_runner.hpp"
 #include "tests.hpp"
 
-int main(unsigned int argc, const char* argv[])
+int main(int argc, const char* argv[])
 {
 	RunAllTests();
 
@@ -52,7 +52,7 @@ int main(unsigned int argc, const char* argv[])
 		std::cerr << "Unknown error occured" << std::endl;
 	}
 
-	// std::system("pause");
+	std::cin.get();
 
 	return 0;
 }
