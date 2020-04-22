@@ -4,7 +4,7 @@
 #include "auxiliary.hpp"
 #include "fem.hpp"
 #include "math_constants.hpp"
-#include "test_runner.hpp"
+#include "test_runner.h"
 #include "tests.hpp"
 
 namespace

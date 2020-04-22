@@ -2,8 +2,10 @@
 
 #include <fstream>
 #include <iomanip>
+#include <functional>
 #include <iostream>
 #include <memory>
+#include <type_traits>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -12,12 +14,12 @@
 #include "fem.hpp"
 #include "numeric_math.hpp"
 #include "point3d.hpp"
-#include "test_runner.hpp"
+#include "test_runner.h"
 #include "tests.hpp"
 
 int main(int argc, const char* argv[])
 {
-	RunAllTests();
+	TEST::RunAllTests();
 
 	try
 	{
@@ -51,8 +53,6 @@ int main(int argc, const char* argv[])
 	{
 		std::cerr << "Unknown error occured" << std::endl;
 	}
-
-	std::cin.get();
 
 	return 0;
 }

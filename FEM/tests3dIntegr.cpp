@@ -3,7 +3,7 @@
 #include "stdafx.hpp"
 
 #include <iostream>
-#include "GaussIntegr.hpp"
+#include "GaussIntegrWrapper.hpp"
 #include "point3d.hpp"
 #include "tests.hpp"
 
@@ -44,15 +44,11 @@ point3d<T> vfunv(const point3d<T>& v)
 	return result;
 }
 
-//--------------------------------------------------------------------------
-
-void TestBasic3d()
+void TestGaussIntegr3d()
 {
 	typedef GaussIntegr::real_t real_t;
 
-	// создание объекта, выполн€ющего интегрирование по √ауссу дл€ трЄхмерного
-	// случа€ с пор€дком 4:
-	static const GaussIntegr::fIntegrate<3, 4> integr;
+	static const GaussIntegr::GaussIntegrWrapper<3, 4> integr;
 
 	real_t result(0.);
 
@@ -60,12 +56,12 @@ void TestBasic3d()
 
 	// с использованием операции +=
 
-	std::cout << integr.ByPlusAssgn_ArrArg(fun3arr<real_t>, result) << '\n';
+	std::cout << integr.ByPlus_ArrArg(fun3arr<real_t>, result) << '\n';
 
 	/*arg*/  // - тип чего приходитс€ указывать при инстанцировании объекта
-	std::cout << integr.ByPlusAssgn<real_t>(ffun3<real_t>(), result) << '\n';
-	std::cout << integr.ByPlusAssgn<point3d<real_t>>(vfun3<real_t>, result) << '\n';
-	std::cout << integr.ByPlusAssgn<real_t>(fun3<real_t>, result) << '\n';
+	std::cout << integr.ByPlus<real_t>(ffun3<real_t>(), result) << '\n';
+	std::cout << integr.ByPlus<point3d<real_t>>(vfun3<real_t>, result) << '\n';
+	std::cout << integr.ByPlus<real_t>(fun3<real_t>, result) << '\n';
 
 	// с использованием операции +
 
@@ -75,11 +71,11 @@ void TestBasic3d()
 	/*arg,ret*/
 	std::cout << integr.ByPlus<real_t, real_t>(ffun3<real_t>()) << '\n';
 	std::cout << integr.ByPlus<point3d<real_t>, real_t>(vfun3<real_t>) << '\n';
-	std::cout << integr.ByPlus<real_t, real_t>(fun3<real_t>) << '\n';
+	std::cout << integr.ByPlus<real_t ,real_t>(fun3<real_t>) << '\n';
 
 	// интегрирование вектор-функций:
 	point3d<real_t> v;
-	std::cout << integr.ByPlusAssgn<point3d<real_t>>(vfunv<real_t>, v) << '\n';
+
+	std::cout << integr.ByPlus<point3d<real_t>>(vfunv<real_t>, v) << '\n';
 	std::cout << integr.ByPlus<point3d<real_t>, point3d<real_t>>(vfunv<real_t>) << '\n';
 }
-//--------------------------------------------------------------------------

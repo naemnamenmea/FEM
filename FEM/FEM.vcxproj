@@ -136,14 +136,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="app_constants.cpp" />
-    <ClCompile Include="FElem.cpp" />
     <ClCompile Include="fem.cpp" />
     <ClCompile Include="fem_chekhov_3d_input.cpp" />
     <ClCompile Include="GaussIntegr.cpp" />
     <ClCompile Include="auxiliary.cpp" />
     <ClCompile Include="material.cpp" />
     <ClCompile Include="numeric_math.cpp" />
-    <ClCompile Include="Tensors.cpp" />
+    <ClCompile Include="testGaussIntegrBasic.cpp" />
     <ClCompile Include="tests1dIntegr.cpp" />
     <ClCompile Include="tests2dIntegr.cpp" />
     <ClCompile Include="tests.cpp" />
@@ -153,10 +152,10 @@
   <ItemGroup>
     <ClInclude Include="auxiliary.hpp" />
     <ClInclude Include="app_constants.hpp" />
-    <ClInclude Include="FElem.h" />
     <ClInclude Include="fem.hpp" />
     <ClInclude Include="finite_element.hpp" />
     <ClInclude Include="GaussIntegr.hpp" />
+    <ClInclude Include="GaussIntegrWrapper.hpp" />
     <ClInclude Include="material.hpp" />
     <ClInclude Include="math_constants.hpp" />
     <ClInclude Include="numeric_math.hpp" />
@@ -167,7 +166,6 @@
     <ClInclude Include="profile.hpp" />
     <ClInclude Include="stdafx.hpp" />
     <ClInclude Include="stl_containers_read.hpp" />
-    <ClInclude Include="Tensors.h" />
     <ClInclude Include="tests.hpp" />
     <ClInclude Include="test_runner.hpp" />
   </ItemGroup>

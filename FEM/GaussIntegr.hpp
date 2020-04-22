@@ -26,11 +26,12 @@
 */
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
-#pragma once
+#ifndef GaussCoefH
+#define GaussCoefH
 //---------------------------------------------------------------------------
 #include <algorithm>
-#include <cmath>
 #include <numeric>
+#include <cmath>
 //---------------------------------------------------------------------------
 namespace GaussIntegr
 {
@@ -47,8 +48,7 @@ real_t GaussX(int ord_, int num_, int newton_steps_);
 real_t GaussW(int ord_, real_t x_);
 //---------------------------------------------------------------------------
 template <int ORD>
-struct GaussCoef1D  // values of gauss coefficients for all orders - by
-					// newton-raphson's iters
+struct GaussCoef1D	// values of gauss coefficients for all orders - by newton-raphson's iters
 {
 private:
 	enum
@@ -75,10 +75,9 @@ public:
 	{
 		return GaussW(ORD, x(i_));
 	}  // is necessary for rolled fInitGaussCoeffsArray
-};	 //---------------------
+};	   //---------------------
 template <>
-struct GaussCoef1D<1>  // specialization of explicit constant values for orders
-					   // 1-5
+struct GaussCoef1D<1>  // specialization of explicit constant values for orders 1-5
 {
 	template <int>
 	static real_t x()
@@ -98,7 +97,7 @@ struct GaussCoef1D<1>  // specialization of explicit constant values for orders
 	{
 		return w<0>();
 	}
-};  //---------------------
+};	//---------------------
 template <>
 struct GaussCoef1D<2>
 {
@@ -381,8 +380,8 @@ inline real_t GaussCoef1D<5>::w(int i_)
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 template <int DIM>
-struct IntegrCoef  // dataStruct for one point for numerical integration of
-				   // arbitrary dimension and order
+struct IntegrCoef  // dataStruct for one point for numerical integration of arbitrary dimension and
+				   // order
 {
 	real_t wxyz[1 + DIM];  // contains w, x, y, z, ...
 	real_t operator[](int i_) const
@@ -427,8 +426,8 @@ struct Pow<M, 1>
 };
 //---------------------------------------------------------------------------
 template <int DIM, int ORD>
-struct fInitGaussCoeffsArray  // initialization of array of Gauss coefficients
-							  // for any order and dimension
+struct fInitGaussCoeffsArray  // initialization of array of Gauss coefficients for any order and
+							  // dimension
 {
 	static void Do(IntegrCoef<DIM>* coeffs_)
 	{
@@ -436,7 +435,7 @@ struct fInitGaussCoeffsArray  // initialization of array of Gauss coefficients
 			fInitGaussCoeffsArray<DIM - 1, ORD>::Do(
 				coeffs_, GaussCoef1D<ORD>::w(i), GaussCoef1D<ORD>::x(i));
 	}
-	template <int DIM1>  // nontemplate DIM1=DIM+1 is sufficient if DIM <= 3
+	template <int DIM1>	 // nontemplate DIM1=DIM+1 is sufficient if DIM <= 3
 	static void Do(IntegrCoef<DIM1>* coeffs_, real_t w_on_y_, real_t next_coord_component_)
 	{
 		for (int i = 0; i < ORD; ++i)
@@ -504,16 +503,17 @@ struct fInitGaussCoeffsArray<1, ORD>
 //--------------------Integrating:-------------------------------------------
 //---------------------------------------------------------------------------
 
-//------- Adapter for subintegrand to convert any function one arg of type const
-// real_t*
+//------- Adapter for subintegrand to convert any function one arg of type const real_t*
 //------- due to array of gauss coefs has type real_t[]
-template <int DIM, typename Targ, typename Tresult, typename FUNC>
-struct fFunArgAdapter;  //    Tresult FUNC(Targ) --> Tresult FUNC(const real_t*)
+template <int DIM, typename Targ, typename Tresult, typename FUN>
+struct fFunArgAdapter;	//    Tresult FUN(Targ) --> Tresult FUN(const real_t*)
 //-----
-template <typename Targ, typename Tresult, typename FUNC>
-struct fFunArgAdapter<1, Targ, Tresult, FUNC>
+template <typename Targ, typename Tresult, typename FUN>
+struct fFunArgAdapter<1, Targ, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_), coord(0.l)
+	FUN f;
+	mutable Targ coord;
+	fFunArgAdapter(FUN f_) : f(f_), coord(0.l)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
@@ -521,29 +521,27 @@ struct fFunArgAdapter<1, Targ, Tresult, FUNC>
 		coord[0] = args_[0];
 		return f(coord);
 	}
-
-	FUNC f;
-	mutable Targ coord;
 };
 //-----
-template <typename Tresult, typename FUNC>
-struct fFunArgAdapter<1, real_t, Tresult, FUNC>
+template <typename Tresult, typename FUN>
+struct fFunArgAdapter<1, real_t, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_)
+	FUN f;
+	fFunArgAdapter(FUN f_) : f(f_)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
 	{
 		return f(args_[0]);
 	}
-
-	FUNC f;
 };
 //-----
-template <typename Targ, typename Tresult, typename FUNC>
-struct fFunArgAdapter<2, Targ, Tresult, FUNC>
+template <typename Targ, typename Tresult, typename FUN>
+struct fFunArgAdapter<2, Targ, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_), coord(0.l)
+	FUN f;
+	mutable Targ coord;
+	fFunArgAdapter(FUN f_) : f(f_), coord(0.l)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
@@ -552,29 +550,27 @@ struct fFunArgAdapter<2, Targ, Tresult, FUNC>
 		coord[1] = args_[1];
 		return f(coord);
 	}
-
-	FUNC f;
-	mutable Targ coord;
 };
 //-----
-template <typename Tresult, typename FUNC>
-struct fFunArgAdapter<2, real_t, Tresult, FUNC>
+template <typename Tresult, typename FUN>
+struct fFunArgAdapter<2, real_t, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_)
+	FUN f;
+	fFunArgAdapter(FUN f_) : f(f_)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
 	{
 		return f(args_[0], args_[1]);
 	}
-
-	FUNC f;
 };
 //-----
-template <typename Targ, typename Tresult, typename FUNC>
-struct fFunArgAdapter<3, Targ, Tresult, FUNC>
+template <typename Targ, typename Tresult, typename FUN>
+struct fFunArgAdapter<3, Targ, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_)
+	FUN f;
+	mutable Targ coord;
+	fFunArgAdapter(FUN f_) : f(f_)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
@@ -584,37 +580,34 @@ struct fFunArgAdapter<3, Targ, Tresult, FUNC>
 		coord[2] = args_[2];
 		return f(coord);
 	}
-
-	FUNC f;
-	mutable Targ coord;
 };
 //-----
-template <typename Tresult, typename FUNC>
-struct fFunArgAdapter<3, real_t, Tresult, FUNC>
+template <typename Tresult, typename FUN>
+struct fFunArgAdapter<3, real_t, Tresult, FUN>
 {
-	fFunArgAdapter(FUNC f_) : f(f_)
+	FUN f;
+	fFunArgAdapter(FUN f_) : f(f_)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
 	{
 		return f(args_[0], args_[1], args_[2]);
 	}
-
-	FUNC f;
 };
 //------------ adapter-function to implicitly define types of template arguments
-template <int DIM, typename Targ, typename Tresult, typename FUNC>
-fFunArgAdapter<DIM, Targ, Tresult, FUNC> AdaptArgsToArray(FUNC f_)
+template <int DIM, typename Targ, typename Tresult, typename FUN>
+fFunArgAdapter<DIM, Targ, Tresult, FUN> AdaptArgsToArray(FUN f_)
 {
-	return fFunArgAdapter<DIM, Targ, Tresult, FUNC>(f_);
+	return fFunArgAdapter<DIM, Targ, Tresult, FUN>(f_);
 }
 //---------------------------------------------------------------------
 //-----------functional objects to be used in algorithms---------------
 //---------------------------------------------------------------------
-template <typename FUNC>
+template <typename FUN>
 struct fweighted_plus
 {
-	fweighted_plus(FUNC f_) : f(f_)
+	FUN f;
+	fweighted_plus(FUN f_) : f(f_)
 	{
 	}
 
@@ -623,41 +616,34 @@ struct fweighted_plus
 	{
 		return prev_sum_ + f(coef_.coord()) * coef_.weight();
 	}
-
-	FUNC f;
 };
-
-template <typename FUNC>
-inline fweighted_plus<FUNC> weighted_plus(FUNC f_)
+template <typename FUN>
+inline fweighted_plus<FUN> weighted_plus(FUN f_)
 {
-	return fweighted_plus<FUNC>(f_);
+	return fweighted_plus<FUN>(f_);
 }
 //---------------------------------------------------------------------
-template <typename T, typename FUNC>
+template <typename T, typename FUN>
 struct fweighted_plus_with_assgn
 {
-	fweighted_plus_with_assgn(FUNC f_, T& result0_) : f(f_), result(result0_)
+	FUN f;
+	T& result;
+	fweighted_plus_with_assgn(FUN f_, T& result0_) : f(f_), result(result0_)
 	{
 	}
-
 	template <int DIM>
 	void operator()(const IntegrCoef<DIM>& coef_) const
-	//     {  result  +=  f(coef_.coord()) * coef_.weight(); } // ������ �� ����
-	//     �i� g++
+	//     {  result  +=  f(coef_.coord()) * coef_.weight(); } // чомусь не робе пiд g++
 	{
 		T funret = f(coef_.coord());
 		funret *= coef_.weight();
 		result += funret;
 	}
-
-	FUNC f;
-	T& result;
 };
-
-template <typename T, typename FUNC>
-inline fweighted_plus_with_assgn<T, FUNC> weighted_plus_with_assgn(FUNC f_, T& result0_)
+template <typename T, typename FUN>
+inline fweighted_plus_with_assgn<T, FUN> weighted_plus_with_assgn(FUN f_, T& result0_)
 {
-	return fweighted_plus_with_assgn<T, FUNC>(f_, result0_);
+	return fweighted_plus_with_assgn<T, FUN>(f_, result0_);
 }
 //---------------------------------------------------------------------
 //-----------Unrolled algorithms---------------------------------------
@@ -666,30 +652,28 @@ inline fweighted_plus_with_assgn<T, FUNC> weighted_plus_with_assgn(FUNC f_, T& r
 #define UNROLL_LOOPS_LIMIT 10
 #endif
 //---------------------------------------------------------------------
-template <typename T, int I_, typename Tret, typename FUNC>
+template <typename T, int I_, typename Tret, typename FUN>
 struct fAccumulate_unrolled
 {
-	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUNC fun_)
+	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
 	{
 		return fun_(
-			fAccumulate_unrolled<T, I_ - 1, Tret, FUNC>::Do(BEGIN_, prev_sum_, fun_),
+			fAccumulate_unrolled<T, I_ - 1, Tret, FUN>::Do(BEGIN_, prev_sum_, fun_),
 			*(BEGIN_ + I_ - 1));
 	}
-};
-//--------------
-template <typename T, typename Tret, typename FUNC>
-struct fAccumulate_unrolled<T, 0, Tret, FUNC>
+};	//--------------
+template <typename T, typename Tret, typename FUN>
+struct fAccumulate_unrolled<T, 0, Tret, FUN>
 {
-	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUNC fun_)
+	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
 	{
 		return prev_sum_;
 	}
-};
-//--------------
-template <int I_, typename Tret, typename T, typename FUNC>
-inline Tret Accumulate_unrolled(const T* BEGIN_, const Tret& prev_sum_, FUNC fun_)
+};	//--------------
+template <int I_, typename Tret, typename T, typename FUN>
+inline Tret Accumulate_unrolled(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
 {
-	return fAccumulate_unrolled<T, I_, Tret, FUNC>::Do(BEGIN_, prev_sum_, fun_);
+	return fAccumulate_unrolled<T, I_, Tret, FUN>::Do(BEGIN_, prev_sum_, fun_);
 }
 //---------------------------------------------------------------------
 template <bool ARRAY_IS_BIG>
@@ -699,53 +683,51 @@ template <>
 struct fRunAccumulate<true>
 {
 #ifndef CYCLE_INSTEAD_OF_STD_ALGO
-	template <typename TArray, typename Tret, typename FUNC>
-	static Tret Do(const TArray& arr_, const Tret& sum0_, FUNC f_)
+	template <typename TArray, typename Tret, typename FUN>
+	static Tret Do(const TArray& arr_, const Tret& sum0_, FUN f_)
 	{
 		return std::accumulate(arr_.begin(), arr_.end(), sum0_, f_);
 	}
 #else
-	template <typename TArray, typename Tret, typename FUNC, typename TPtr>
-	static Tret Do(const TArray& arr_, const Tret& sum0_, FUNC f_)
+	template <typename TArray, typename Tret, typename FUN, typename TPtr>
+	static Tret Do(const TArray& arr_, const Tret& sum0_, FUN f_)
 	{
 		for (TPtr p = arr_.begin(); p < arr_.end(); ++p) sum0_ = sum0_ + f_(*p);
 		return sum0_;
 	}
 #endif
-};
-//-------
+};	//-------
 template <>
 struct fRunAccumulate<false>
 {
-	template <typename TArray, typename Tret, typename FUNC>
-	static Tret Do(const TArray& arr_, const Tret& sum0_, FUNC f_)
+	template <typename TArray, typename Tret, typename FUN>
+	static Tret Do(const TArray& arr_, const Tret& sum0_, FUN f_)
 	{
 		return Accumulate_unrolled<TArray::size, Tret>(arr_.begin(), sum0_, f_);
 	}
 };
 //---------------------------------------------------------------------
-template <typename T, int I_, typename FUNC>
+template <typename T, int I_, typename FUN>
 struct fForEach_unrolled
 {
-	static void Do(const T* BEGIN_, FUNC fun_)
+	static void Do(const T* BEGIN_, FUN fun_)
 	{
-		fForEach_unrolled<T, I_ - 1, FUNC>::Do(BEGIN_, fun_);
+		fForEach_unrolled<T, I_ - 1, FUN>::Do(BEGIN_, fun_);
 		fun_(*(BEGIN_ + I_ - 1));
 	}
-};
-//--------------
-template <typename T, typename FUNC>
-struct fForEach_unrolled<T, 0, FUNC>
+};	//--------------
+template <typename T, typename FUN>
+struct fForEach_unrolled<T, 0, FUN>
 {
-	static void Do(const T*, FUNC)
+	static void Do(const T*, FUN)
 	{
 	}
 };
 //--------------
-template <int I_, typename T, typename FUNC>
-inline void ForEach_unrolled(const T* BEGIN_, FUNC fun_)
+template <int I_, typename T, typename FUN>
+inline void ForEach_unrolled(const T* BEGIN_, FUN fun_)
 {
-	fForEach_unrolled<T, I_, FUNC>::Do(BEGIN_, fun_);
+	fForEach_unrolled<T, I_, FUN>::Do(BEGIN_, fun_);
 }
 //---------------------------------------------------------------------
 template <bool ARRAY_IS_BIG>
@@ -754,17 +736,17 @@ struct fRunForEach;
 template <>
 struct fRunForEach<true>
 {
-	template <typename TArray, typename FUNC>
-	static void Do(const TArray& arr_, FUNC f_)
+	template <typename TArray, typename FUN>
+	static void Do(const TArray& arr_, FUN f_)
 	{
 		std::for_each(arr_.begin(), arr_.end(), f_);
 	}
-};  //-------
+};	//-------
 template <>
 struct fRunForEach<false>
 {
-	template <typename TArray, typename FUNC>
-	static void Do(const TArray& arr_, FUNC f_)
+	template <typename TArray, typename FUN>
+	static void Do(const TArray& arr_, FUN f_)
 	{
 		ForEach_unrolled<TArray::size>(arr_.begin(), f_);
 	}
@@ -773,8 +755,7 @@ struct fRunForEach<false>
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 template <int DIM, int ORD>
-struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with
-				   // integration
+struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integration
 {
 	enum
 	{
@@ -796,14 +777,14 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with
 		return Coeffs + size;
 	}
 	//-------
-	template <typename Tret, typename FUNC>
-	Tret ByPlus_ArrArg(FUNC f_) const
+	template <typename Tret, typename FUN>
+	Tret ByPlus_ArrArg(FUN f_) const
 	{
 		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(
 			*this, Tret(0.l), weighted_plus(f_));
 	}  //-------
-	template <typename Tret, typename FUNC>
-	Tret& ByPlusAssgn_ArrArg(FUNC f_, Tret& result_) const
+	template <typename Tret, typename FUN>
+	Tret& ByPlusAssgn_ArrArg(FUN f_, Tret& result_) const
 	{
 #ifndef CYCLE_INSTEAD_OF_STD_ALGO
 		fRunForEach<(size >= UNROLL_LOOPS_LIMIT)>::Do(*this, weighted_plus_with_assgn(f_, result_));
@@ -814,20 +795,20 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with
 #endif
 		return result_;
 	}  //-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret ByPlus(FUNC f_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret ByPlus(FUN f_) const
 	{
 		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(
 			*this, Tret(0.l), weighted_plus(AdaptArgsToArray<DIM, Targ, Tret>(f_)));
 	}  //-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret& ByPlusAssgn(FUNC f_, Tret& result_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
 #ifndef CYCLE_INSTEAD_OF_STD_ALGO
 		fRunForEach<(size >= UNROLL_LOOPS_LIMIT)>::Do(
 			*this, weighted_plus_with_assgn(AdaptArgsToArray<DIM, Targ, Tret>(f_), result_));
 #else
-		fFunArgAdapter<DIM, Targ, Tret, FUNC> f(f_);
+		fFunArgAdapter<DIM, Targ, Tret, FUN> f(f_);
 		Tret f_from_coord;
 		for (const IntegrCoef<DIM>* p = begin(); p < end(); ++p)
 			result_ += ((f_from_coord = f(p->coord())) *= p->weight());
@@ -848,20 +829,20 @@ struct fIntegrate<1, ORD>
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
 	//-------
-	/* template <typename Targ, typename Tret, typename FUNC>
-	 Tret ByPlus_ArrArg(FUNC f_) const
-	   {
-	   }//-------
+	/* template <typename Targ, typename Tret, typename FUN>
+	 Tret ByPlus_ArrArg(FUN f_) const
+		 {
+		 }//-------
 	*/
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret ByPlus(FUNC f_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret ByPlus(FUN f_) const
 	{
 		Tret result(0.l);
 		for (int i = 0; i < ORD; ++i) result = result + f_(Coeffs[i].coord(1)) * Coeffs[i].weight();
 		return result;
 	}  //-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret& ByPlusAssgn(FUNC f_, Tret& result_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
 		static Targ arg(0.);
 		static Tret tmp;
@@ -886,12 +867,11 @@ struct fIntegrate<2, ORD>
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
 	//-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret ByPlus(FUNC f_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret ByPlus(FUN f_) const
 	{
 		Tret result(0.l);
-		//    AdaptArgsToArray<2,Targ,Tret> f(f_);  // - error in g++: expected ';'
-		//    before 'f'
+		//    AdaptArgsToArray<2,Targ,Tret> f(f_);  // - error in g++: expected ';' before 'f'
 		for (int i = 0, j; i < ORD; ++i)
 			for (j = 0; j < ORD; ++j)
 				//       result = result +
@@ -901,8 +881,8 @@ struct fIntegrate<2, ORD>
 									  Coeffs[i].weight() * Coeffs[j].weight();
 		return result;
 	}  //-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret& ByPlusAssgn(FUNC f_, Tret& result_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
 		static Targ arg(0.);
 		//    static Tret tmp;
@@ -913,8 +893,8 @@ struct fIntegrate<2, ORD>
 			{
 				arg[1] = Coeffs[j].coord(1);
 				/*       tmp = f_(arg);
-					   tmp *= (Coeffs[i].weight()*Coeffs[j].weight());   // = error
-					   result_ += tmp;*/
+							 tmp *= (Coeffs[i].weight()*Coeffs[j].weight());   // = error
+							 result_ += tmp;*/
 				result_ += (f_(arg) *= (Coeffs[i].weight() * Coeffs[j].weight()));
 			}
 		}
@@ -932,8 +912,8 @@ struct fIntegrate<3, ORD>
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
 	//-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret ByPlus(FUNC f_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret ByPlus(FUN f_) const
 	{
 		Tret result(0.l);
 		//    AdaptArgsToArray<3,Targ,Tret> f(f_);
@@ -948,11 +928,10 @@ struct fIntegrate<3, ORD>
 									 Coeffs[i].weight() * Coeffs[j].weight() * Coeffs[k].weight();
 		return result;
 	}  //-------
-	template <typename Targ, typename Tret, typename FUNC>
-	Tret& ByPlusAssgn(FUNC f_, Tret& result_) const
+	template <typename Targ, typename Tret, typename FUN>
+	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
-		//    AdaptArgsToArray<3,Targ,Tret> f(f_);  // - error in g++: expected ';'
-		//    before 'f'
+		//    AdaptArgsToArray<3,Targ,Tret> f(f_);  // - error in g++: expected ';' before 'f'
 		static Targ arg;
 		for (int i = 0, j, k; i < ORD; ++i)
 		{
@@ -976,5 +955,6 @@ struct fIntegrate<3, ORD>
 	}  //-------
 };
 //---------------------------------------------------------------------------
-#endif  // NESTED_CYCLE_FOR_DIM_LESS_THAN_4
+#endif	// NESTED_CYCLE_FOR_DIM_LESS_THAN_4
 }  // namespace GaussIntegr
+#endif

@@ -1,5 +1,3 @@
-// Author: Chekhov Vladimir Valerevich
-
 #include "stdafx.hpp"
 
 #include <cmath>
@@ -37,7 +35,7 @@ point1d<T> vfunv(const point1d<T>& v)
 	return result;
 }
 
-void TestGaussIntegr1d()
+void TestGaussIntegrBasic()
 {
 	typedef GaussIntegr::real_t real_t;
 
@@ -45,16 +43,31 @@ void TestGaussIntegr1d()
 
 	// выполнение численного интегрирования:
 
+	/*
+		x16 случаев рассмотреть: 4 вида функций х 4 метода
+	*/
+
 	{
 		// с использованием операции +=
 
-		real_t result(0.);
+		{
+			real_t numRes(0.);	
+			point1d<real_t> vecRes(0.);	
 
-		std::cout << integr.ByPlus_ArrArg(fun1arr<real_t>, result) << '\n';
+			std::cout << integr.ByPlus_ArrArg(fun1arr<real_t>, numRes) << '\n';
+			//std::cout << integr.ByPlus_ArrArg(fun1<real_t>, numRes) << '\n';
+			//std::cout << integr.ByPlus_ArrArg(vfun1<real_t>, numRes) << '\n';
+			//std::cout << integr.ByPlus_ArrArg(vfunv<real_t>, vecRes) << '\n';
+		}
 
-		/*arg*/  // - тип чего приходится указывать при инстанцировании объекта
-		std::cout << integr.ByPlus<real_t>(vfun1<real_t>, result) << '\n';
-		std::cout << integr.ByPlus<real_t>(fun1<real_t>, result) << '\n';
+		{
+			//real_t result(0.);	
+
+			//std::cout << integr.ByPlus(fun1arr<real_t>, result) << '\n';
+			//std::cout << integr.ByPlus(fun1<real_t>, result) << '\n';
+			//std::cout << integr.ByPlus(vfun1<real_t>, result) << '\n';
+			//std::cout << integr.ByPlus(vfunv<real_t>, result) << '\n';
+		}
 	}
 
 	{
@@ -64,7 +77,7 @@ void TestGaussIntegr1d()
 		std::cout << integr.ByPlus_ArrArg<real_t>(fun1arr<real_t>) << '\n';
 
 		/*arg,ret*/
-		std::cout << integr.ByPlus<real_t, real_t>(vfun1<real_t>) << '\n';
+		std::cout << integr.ByPlus<point1d<real_t>, real_t>(vfun1<real_t>) << '\n';
 		std::cout << integr.ByPlus<real_t, real_t>(fun1<real_t>) << '\n';
 	}
 
@@ -72,7 +85,7 @@ void TestGaussIntegr1d()
 		// интегрирование вектор-функций:
 		point1d<real_t> v;
 
-		std::cout << integr.ByPlus<point1d<real_t>>(vfunv<real_t>, v) << '\n';
-		std::cout << integr.ByPlus<point1d<real_t>, point1d<real_t>>(vfunv<real_t>) << '\n';
+		std::cout << integr.ByPlus<real_t>(vfunv<real_t>, v) << '\n';
+		std::cout << integr.ByPlus<real_t, point1d<real_t>>(vfunv<real_t>) << '\n';
 	}
 }

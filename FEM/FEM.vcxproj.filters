@@ -64,17 +64,14 @@
     <ClCompile Include="app_constants.cpp">
       <Filter>App\src</Filter>
     </ClCompile>
-    <ClCompile Include="Tensors.cpp">
-      <Filter>Math\src</Filter>
-    </ClCompile>
-    <ClCompile Include="FElem.cpp">
-      <Filter>App\Components\src</Filter>
-    </ClCompile>
     <ClCompile Include="fem.cpp">
       <Filter>App\Components\src</Filter>
     </ClCompile>
     <ClCompile Include="material.cpp">
       <Filter>App\Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="testGaussIntegrBasic.cpp">
+      <Filter>Tests\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,18 +108,9 @@
     <ClInclude Include="stl_containers_write.hpp">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="GaussIntegr.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.hpp" />
     <ClInclude Include="app_constants.hpp">
       <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="Tensors.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="FElem.h">
-      <Filter>App\Components</Filter>
     </ClInclude>
     <ClInclude Include="fem.hpp">
       <Filter>App\Components</Filter>
@@ -132,6 +120,12 @@
     </ClInclude>
     <ClInclude Include="material.hpp">
       <Filter>App\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GaussIntegrWrapper.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GaussIntegr.hpp">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

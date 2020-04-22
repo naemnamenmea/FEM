@@ -26,6 +26,12 @@ std::ostream& operator<<(std::ostream& os, const std::map<K, V>& m)
 }
 
 template <typename K, typename V>
+std::ostream& operator<<(std::ostream& os, const std::unordered_map<K, V>& m)
+{
+	return os << '{' << Join(m, ',') << '}';
+}
+
+template <typename K, typename V>
 std::ostream& operator<<(std::ostream& os, const std::unordered_multimap<K, V>& m)
 {
 	return os << '{' << Join(m, ',') << '}';
