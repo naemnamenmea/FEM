@@ -18,6 +18,43 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\app_constants.cpp" />
+    <ClCompile Include="src\auxiliary.cpp" />
+    <ClCompile Include="src\cmdLineParams.cpp" />
+    <ClCompile Include="src\fem.cpp" />
+    <ClCompile Include="src\GaussIntegr.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\material.cpp" />
+    <ClCompile Include="src\numeric_math.cpp" />
+    <ClCompile Include="Tests\fem_chekhov_3d_inputTest.cpp" />
+    <ClCompile Include="Tests\GaussIntegrBasicTest.cpp" />
+    <ClCompile Include="Tests\AllTests.cpp" />
+    <ClCompile Include="Tests\1dIntegrTest.cpp" />
+    <ClCompile Include="Tests\2dIntegrTest.cpp" />
+    <ClCompile Include="Tests\3dIntegrTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\app_constants.hpp" />
+    <ClInclude Include="include\auxiliary.hpp" />
+    <ClInclude Include="include\cmdLineParams.hpp" />
+    <ClInclude Include="include\fem.hpp" />
+    <ClInclude Include="include\finite_element.hpp" />
+    <ClInclude Include="include\GaussIntegr.hpp" />
+    <ClInclude Include="include\GaussIntegrWrapper.hpp" />
+    <ClInclude Include="include\material.hpp" />
+    <ClInclude Include="include\math_constants.hpp" />
+    <ClInclude Include="include\numeric_math.hpp" />
+    <ClInclude Include="include\point1d.hpp" />
+    <ClInclude Include="include\point2d.hpp" />
+    <ClInclude Include="include\point3d.hpp" />
+    <ClInclude Include="include\profile.hpp" />
+    <ClInclude Include="include\stdafx.hpp" />
+    <ClInclude Include="include\stl_containers_read.hpp" />
+    <ClInclude Include="include\stl_containers_write.hpp" />
+    <ClInclude Include="include\tests.hpp" />
+    <ClInclude Include="include\test_runner.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{70DC14E7-A181-40A1-B250-BB9FB7975BF2}</ProjectGuid>
@@ -72,11 +109,11 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
@@ -86,12 +123,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -100,14 +137,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -118,14 +155,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -134,41 +171,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="app_constants.cpp" />
-    <ClCompile Include="fem.cpp" />
-    <ClCompile Include="fem_chekhov_3d_input.cpp" />
-    <ClCompile Include="GaussIntegr.cpp" />
-    <ClCompile Include="auxiliary.cpp" />
-    <ClCompile Include="material.cpp" />
-    <ClCompile Include="numeric_math.cpp" />
-    <ClCompile Include="testGaussIntegrBasic.cpp" />
-    <ClCompile Include="tests1dIntegr.cpp" />
-    <ClCompile Include="tests2dIntegr.cpp" />
-    <ClCompile Include="tests.cpp" />
-    <ClCompile Include="tests3dIntegr.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="auxiliary.hpp" />
-    <ClInclude Include="app_constants.hpp" />
-    <ClInclude Include="fem.hpp" />
-    <ClInclude Include="finite_element.hpp" />
-    <ClInclude Include="GaussIntegr.hpp" />
-    <ClInclude Include="GaussIntegrWrapper.hpp" />
-    <ClInclude Include="material.hpp" />
-    <ClInclude Include="math_constants.hpp" />
-    <ClInclude Include="numeric_math.hpp" />
-    <ClInclude Include="point1d.hpp" />
-    <ClInclude Include="point2d.hpp" />
-    <ClInclude Include="point3d.hpp" />
-    <ClInclude Include="stl_containers_write.hpp" />
-    <ClInclude Include="profile.hpp" />
-    <ClInclude Include="stdafx.hpp" />
-    <ClInclude Include="stl_containers_read.hpp" />
-    <ClInclude Include="tests.hpp" />
-    <ClInclude Include="test_runner.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -15,38 +15,38 @@ public:
 	public:
 		double GetDensity() const
 		{
-			return density;
+			return m_density;
 		}
 		void SetDensity(double newDensity)
 		{
-			density = newDensity;
+			m_density = newDensity;
 		}
 
 		friend std::istream& operator>>(std::istream& is, Properties& prop);
 
 	private:
-		double density;
+		double m_density;
 	};
 
 	const std::string& GetName() const
 	{
-		return name;
+		return m_name;
 	}
 
 	const Properties& GetProperties() const
 	{
-		return properties;
+		return m_properties;
 	}
 	void SetProperties(const Properties& prop)
 	{
-		properties = prop;
+		m_properties = prop;
 	}
 
 	friend std::istream& operator>>(std::istream& is, Material& material);
 
 private:
-	std::string name;
-	Properties properties;
+	std::string m_name;
+	Properties m_properties;
 };
 
 inline bool operator==(const Material& lhs, const Material& rhs)

@@ -11,43 +11,44 @@ template <size_t DIM>
 class Node
 {
 public:
-	Node() : coord(DIM), freedomDegrees(DIM)
+	Node() : m_coord(DIM), m_freedomDegrees(DIM)
 	{
 	}
 	Node(const std::vector<double>& coord, std::vector<FEM::DEGREES_OF_FREEDOM> fd)
-		: coord(DIM), freedomDegrees(fd)
+		: m_coord(DIM), m_freedomDegrees(fd)
 	{
 	}
 
 	const auto& GetCoord() const
 	{
-		return coord;
+		return m_coord;
 	}
 
 	const auto& GetFreedomDegrees() const
 	{
-		return freedomDegrees;
+		return m_freedomDegrees;
 	}
 
-  /*
-  * example of input:
-  * 1 0. −10. 0. fixed fixed fixed
-  */
-  friend std::istream& operator>>(std::istream& is, Node& node)
-  {
-    std::vector<std::string> _freedomDegrees(node.freedomDegrees.size());
-    is >> node.coord >> _freedomDegrees;
-    for (size_t i = 0; i < node.freedomDegrees.size(); ++i)
-    {
-      node.freedomDegrees[i] = _freedomDegrees[i] == "fixed" ? FEM::DEGREES_OF_FREEDOM::FIXED
-        : FEM::DEGREES_OF_FREEDOM::FREE;
-    }
-    return is;
-  }
+	/*
+	 * example of input:
+	 * 1 0. −10. 0. fixed fixed fixed
+	 */
+	friend std::istream& operator>>(std::istream& is, Node& node)
+	{
+		std::vector<std::string> _freedomDegrees(node.m_freedomDegrees.size());
+		is >> node.m_coord >> _freedomDegrees;
+		for (size_t i = 0; i < node.m_freedomDegrees.size(); ++i)
+		{
+			node.m_freedomDegrees[i] = _freedomDegrees[i] == "fixed"
+										   ? FEM::DEGREES_OF_FREEDOM::FIXED
+										   : FEM::DEGREES_OF_FREEDOM::FREE;
+		}
+		return is;
+	}
 
 private:
-	std::vector<double> coord;
-	std::vector<FEM::DEGREES_OF_FREEDOM> freedomDegrees;
+	std::vector<double> m_coord;
+	std::vector<FEM::DEGREES_OF_FREEDOM> m_freedomDegrees;
 };
 
 /*
@@ -63,28 +64,28 @@ public:
 
 	const auto& GetType() const
 	{
-		return type;
+		return m_type;
 	}
 	const auto& GetNodeNumbers() const
 	{
-		return nodeNumbers;
+		return m_nodeNumbers;
 	}
 	const auto& GetMaterial() const
 	{
-		return *material;
+		return *m_material;
 	}
 
 	void SetType(std::string type)
 	{
-		this->type = std::move(type);
+		this->m_type = std::move(type);
 	}
 	void SetNodeNumbers(const std::vector<size_t>& nodeNumbers)
 	{
-		this->nodeNumbers = nodeNumbers;
+		this->m_nodeNumbers = nodeNumbers;
 	}
 	void SetMaterial(std::unordered_set<Material>::const_iterator material)
 	{
-		this->material = material;
+		this->m_material = material;
 	}
 
 	virtual void ReadProperties(std::istream& is);
@@ -95,9 +96,9 @@ public:
 	}
 
 protected:
-	std::string type;
-	std::vector<size_t> nodeNumbers;
-  std::unordered_set<Material>::const_iterator material;
+	std::string m_type;
+	std::vector<size_t> m_nodeNumbers;
+	std::unordered_set<Material>::const_iterator m_material;
 };
 
 class FiniteElement1d : public FiniteElementBase
@@ -109,7 +110,7 @@ public:
 
 	double GetParameter() const override
 	{
-		return crossSectionalArea;
+		return m_crossSectionalArea;
 	}
 
 	unsigned int GetDim() const override
@@ -118,7 +119,7 @@ public:
 	}
 
 private:
-	double crossSectionalArea;
+	double m_crossSectionalArea;
 };
 
 class FiniteElement2d : public FiniteElementBase
@@ -130,7 +131,7 @@ public:
 
 	double GetParameter() const override
 	{
-		return thickness;
+		return m_thickness;
 	}
 
 	unsigned int GetDim() const override
@@ -139,7 +140,7 @@ public:
 	}
 
 private:
-	double thickness;
+	double m_thickness;
 };
 
 class FiniteElement3d : public FiniteElementBase

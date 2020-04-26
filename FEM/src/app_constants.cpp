@@ -3,10 +3,11 @@
 #include "app_constants.hpp"
 
 std::unordered_map<std::string, FEM::CMD_ARGS> cmd_args = {
-	{CMD_ARG_FULL_NAME_INPUT_FILE, FEM::CMD_ARGS::DUMMY},
+	{CMD_ARG_FULL_NAME_INPUT_FILE, FEM::CMD_ARGS::INPUT_FILEPATH},
+	{CMD_ARG_OUTPUT_FOLDER_NAME, FEM::CMD_ARGS::OUTPUT_FOLDER},
 };
 
-std::unordered_map<std::string, std::string> arg_alias = {
+std::unordered_map<std::string, std::string> cmd_args_alias = {
 	{CMD_ARG_SHORT_NAME_INPUT_FILE, CMD_ARG_FULL_NAME_INPUT_FILE},
 };
 

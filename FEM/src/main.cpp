@@ -14,6 +14,7 @@
 #include "fem.hpp"
 #include "numeric_math.hpp"
 #include "point3d.hpp"
+#include "cmdLineParams.hpp"
 #include "test_runner.h"
 #include "tests.hpp"
 
@@ -24,26 +25,11 @@ int main(int argc, const char* argv[])
 	try
 	{
 		FiniteElementModel<3> FEModel;
-		try
-		{
-			FEModel.SetParams(argc, argv);
-		}
-		catch (std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-			exit(1);
-		}
+		CmdLineParams cmdParams(argc, argv);
+		FEModel.ReadData(cmdParams.GetInputFilePath());
+		FEModel.WriteData(cmdParams.GetOutputFilePath());
 
-		try
-		{
-			FEModel.ReadData("data/in/2dim_model_001.txt", FEM::IO_FORMAT::CHEKHOV);
-		}
-		catch (std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-
-		FEModel.WriteData("data/out/2dim_model_001.txt", FEM::IO_FORMAT::CHEKHOV);
+		std::cout << "FEM executed successfully." << std::endl;
 	}
 	catch (std::exception& e)
 	{
@@ -51,7 +37,7 @@ int main(int argc, const char* argv[])
 	}
 	catch (...)
 	{
-		std::cerr << "Unknown error occured" << std::endl;
+		std::cerr << "Unknown error occured." << std::endl;
 	}
 
 	return 0;

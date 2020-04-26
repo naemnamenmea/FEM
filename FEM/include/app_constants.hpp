@@ -5,8 +5,9 @@
 #include <unordered_map>
 #include <utility>
 
-#define CMD_ARG_FULL_NAME_INPUT_FILE "--data"
-#define CMD_ARG_SHORT_NAME_INPUT_FILE "-d"
+#define CMD_ARG_FULL_NAME_INPUT_FILE "--input_file"
+#define CMD_ARG_SHORT_NAME_INPUT_FILE "-ifile"
+#define CMD_ARG_OUTPUT_FOLDER_NAME "--result_folder"
 
 #define INPUT_TAG_END_OF_INPUT "[End]"
 #define INPUT_TAG_NODES "[Nodes]"
@@ -52,11 +53,13 @@ enum class DEGREES_OF_FREEDOM
 enum class MATERIAL
 {
 	AL_ALLOY,  // Al_Alloy
-	STEEL,	 // Steel
+	STEEL,	   // Steel
 };
 
 enum class CMD_ARGS
 {
+	INPUT_FILEPATH,
+	OUTPUT_FOLDER,
 	DUMMY
 };
 
@@ -66,7 +69,7 @@ std::ostream& operator<<(std::ostream& os, const FEM::DEGREES_OF_FREEDOM& freedo
 
 extern std::unordered_map<std::string, FEM::CMD_ARGS> cmd_args;
 
-extern std::unordered_map<std::string, std::string> arg_alias;
+extern std::unordered_map<std::string, std::string> cmd_args_alias;
 
 extern std::unordered_map<std::string, FEM::IO::TAG> input_tags;
 

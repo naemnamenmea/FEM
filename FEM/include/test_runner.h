@@ -13,7 +13,10 @@
 template <class T, class U>
 void AssertEqual(const T& t, const U& u, const std::string& hint = {})
 {
+#pragma warning(push)
+#pragma warning(disable : 4389)
 	if (!(t == u))
+#pragma warning(pop)
 	{
 		std::stringstream os;
 		os << "Assertion failed: " << t << " != " << u;
@@ -84,4 +87,4 @@ private:
 		Assert(x, __assert_equal_private_os.str());                                      \
 	}
 
-#define RUN_TEST(tr, func, ...) tr.RunTest(func, #func , ## __VA_ARGS__)
+#define RUN_TEST(tr, func, ...) tr.RunTest(func, #func, ##__VA_ARGS__)

@@ -1,7 +1,6 @@
 #include "stdafx.hpp"
 
 #include "test_runner.h"
-#include "tests.hpp"
 
 // Numerical integration tests
 void TestGaussIntegrBasic();
@@ -26,9 +25,9 @@ void RunAllTests()
 	RUN_TEST(tr, TestFEMChekhovInputFiniteElements);
 
 	// Numerical integration tests
-	//RUN_TEST(tr, TestGaussIntegrBasic);
-	//RUN_TEST(tr, TestGaussIntegr1d);
-	//RUN_TEST(tr, TestGaussIntegr2d);
-	//RUN_TEST(tr, TestGaussIntegr3d);
+	RUN_TEST(tr, TestGaussIntegrBasic);
+	RUN_TEST(tr, TestGaussIntegr1d);
+	RUN_TEST(tr, TestGaussIntegr2d);
+	RUN_TEST(tr, TestGaussIntegr3d);
 }
 }  // namespace TEST

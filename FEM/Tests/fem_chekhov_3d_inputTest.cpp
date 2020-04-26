@@ -5,14 +5,13 @@
 #include "fem.hpp"
 #include "math_constants.hpp"
 #include "test_runner.h"
-#include "tests.hpp"
 
 namespace
 {
 namespace fs = std::filesystem;
 
-fs::path inputDir = "data/in";
-fs::path outputDir = "data/out";
+fs::path inputDir = "data";
+fs::path outputDir = inputDir;
 std::string fileName1 = "2dim_model_001.txt";
 std::string fileName2 = "no_end_tag.txt";
 }  // namespace
@@ -33,7 +32,7 @@ void TestFEMChekhovInputNodes()
 
 		auto it = nodes.find(15);
 
-		ASSERT(it != std::end(nodes));
+		ASSERT(it != nodes.end());
 
 		const auto& node = it->second;
 		const auto& coord = node.GetCoord();
@@ -64,22 +63,22 @@ void TestFEMChekhovInputMaterials()
 
 		{
 			auto it = materials.find({"Al_Alloy"});
-			ASSERT(it != std::end(materials));
+			ASSERT(it != materials.end());
 
 			const auto& material = *it;
 			const auto& materialProp = material.GetProperties();
 
-			ASSERT(isEqual(materialProp.GetDensity(), 0.0028));
+			ASSERT(mathdef::isEqual(materialProp.GetDensity(), 0.0028));
 		}
 
 		{
 			auto it = materials.find({"Steel"});
-			ASSERT(it != std::end(materials));
+			ASSERT(it != materials.end());
 
 			const auto& material = *it;
 			const auto& materialProp = material.GetProperties();
 
-			ASSERT(isEqual(materialProp.GetDensity(), 0.0078));
+			ASSERT(mathdef::isEqual(materialProp.GetDensity(), 0.0078));
 		}
 	}
 }
@@ -101,7 +100,7 @@ void TestFEMChekhovInputFiniteElements()
 		{
 			auto it = finiteElements.find(17);
 
-			ASSERT(it != std::end(finiteElements));
+			ASSERT(it != finiteElements.end());
 
 			const auto& fe = it->second;
 
@@ -120,7 +119,7 @@ void TestFEMChekhovInputFiniteElements()
 
 			if (fe->GetDim() < 3)
 			{
-				ASSERT(isEqual(fe->GetParameter(), 0.1));
+				ASSERT(mathdef::isEqual(fe->GetParameter(), 0.1));
 			}
 		}
 
@@ -128,7 +127,7 @@ void TestFEMChekhovInputFiniteElements()
 		{
 			auto it = finiteElements.find(37);
 
-			ASSERT(it != std::end(finiteElements));
+			ASSERT(it != finiteElements.end());
 
 			const auto& fe = it->second;
 
@@ -147,7 +146,7 @@ void TestFEMChekhovInputFiniteElements()
 
 			if (fe->GetDim() < 3)
 			{
-				ASSERT(isEqual(fe->GetParameter(), 1.));
+				ASSERT(mathdef::isEqual(fe->GetParameter(), 1.));
 			}
 		}
 	}

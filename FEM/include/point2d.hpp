@@ -11,50 +11,50 @@ public:
 
 	point2d()
 	{
-		elems[0] = T{};
-		elems[1] = T{};
+		m_elems[0] = T{};
+		m_elems[1] = T{};
 	}
 
 	point2d(T value)
 	{
-		elems[0] = value;
-		elems[1] = value;
+		m_elems[0] = value;
+		m_elems[1] = value;
 	}
 
 	point2d(T x, T y)
 	{
-		elems[0] = x;
-		elems[1] = y;
+		m_elems[0] = x;
+		m_elems[1] = y;
 	}
 
 	const T x() const
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	const T y() const
 	{
-		return elems[1];
+		return m_elems[1];
 	}
 
 	T& x()
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	T& y()
 	{
-		return elems[1];
+		return m_elems[1];
 	}
 
 	operator T*()
 	{
-		return elems;
+		return m_elems;
 	}
 
 	operator T const*() const
 	{
-		return elems;
+		return m_elems;
 	}
 
 	T operator*(const point2d<T>& p) const
@@ -124,7 +124,7 @@ public:
 	}
 
 private:
-	T elems[2];
+	T m_elems[2];
 };
 
 template class point2d<double>;

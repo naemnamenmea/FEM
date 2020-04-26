@@ -26,30 +26,30 @@ FiniteElementBase::FiniteElementBase()
 {
 }
 
-FiniteElementBase::FiniteElementBase(size_t nodes) : nodeNumbers(nodes)
+FiniteElementBase::FiniteElementBase(size_t nodes) : m_nodeNumbers(nodes)
 {
 }
 
-void FiniteElementBase::ReadProperties(std::istream& is)
+void FiniteElementBase::ReadProperties(std::istream& /*is*/)
 {
 }
 
-FiniteElement1d::FiniteElement1d(size_t nodes) : FiniteElementBase(nodes)
+FiniteElement1d::FiniteElement1d(size_t nodes) : FiniteElementBase(nodes), m_crossSectionalArea(0)
 {
 }
 
 void FiniteElement1d::ReadProperties(std::istream& is)
 {
-	is >> crossSectionalArea;
+	is >> m_crossSectionalArea;
 }
 
-FiniteElement2d::FiniteElement2d(size_t nodes) : FiniteElementBase(nodes)
+FiniteElement2d::FiniteElement2d(size_t nodes) : FiniteElementBase(nodes), m_thickness(0)
 {
 }
 
 void FiniteElement2d::ReadProperties(std::istream& is)
 {
-	is >> thickness;
+	is >> m_thickness;
 }
 
 FiniteElement3d::FiniteElement3d(size_t nodes) : FiniteElementBase(nodes)
@@ -59,55 +59,16 @@ FiniteElement3d::FiniteElement3d(size_t nodes) : FiniteElementBase(nodes)
 template <size_t DIM>
 FiniteElementModel<DIM>::FiniteElementModel()
 {
+#pragma warning(push)
+#pragma warning(disable : 4127)
 	if (DIM > 3)
+#pragma warning(pop)
 	{
 		throw std::runtime_error(DIM + " dimension is not supported");
 	}
 
 	// std::cerr << "You are working in " << DIM << "-dimentional space"
 	//          << std::endl;
-}
-
-template <size_t DIM>
-void FiniteElementModel<DIM>::SetParams(unsigned int argc, const char* argv[])
-{
-	auto isValidParam = [argc, &argv](unsigned int i) -> bool {
-		return i + 1 < argc && (i + 2 >= argc || argv[i + 2][0] == '-');
-	};
-
-	for (unsigned int i = 1; i < argc; i += 2)
-	{
-		// std::cerr << std::setw(2) << i << ": \"" << argv[i] << "\"" <<
-		// std::endl;
-
-		auto it = cmd_args.find(argv[i]);
-		if (it == std::end(cmd_args) && arg_alias.count(argv[i]) != 0)
-		{
-			it = cmd_args.find(arg_alias[argv[i]]);
-		}
-
-		std::stringstream error_msg;
-		if (it == std::end(cmd_args))
-		{
-			error_msg << "Unknown parameter: \"" << argv[i] << "\"";
-			throw std::runtime_error(error_msg.str());
-		}
-
-		if (!isValidParam(i))
-		{
-			error_msg << "Parameter \"" << argv[i] << "\" should accept exactly 1 value";
-			throw std::runtime_error(error_msg.str());
-		}
-
-		FEM::CMD_ARGS param = it->second;
-
-		if (param == FEM::CMD_ARGS::DUMMY)
-		{
-		}
-		else
-		{
-		}
-	}
 }
 
 template <size_t DIM>
@@ -137,7 +98,7 @@ void FiniteElementModel<DIM>::ReadData(fs::path path, FEM::IO_FORMAT inputFormat
 
 				auto it = input_tags.find(std::string(curTagName));
 
-				if (it != std::end(input_tags))
+				if (it != input_tags.end())
 				{
 					curTag = it->second;
 					if (curTag == FEM::IO::TAG::END_OF_INPUT)
@@ -165,13 +126,13 @@ void FiniteElementModel<DIM>::ReadData(fs::path path, FEM::IO_FORMAT inputFormat
 					size_t nodeNumber;
 					Node<DIM> node;
 					iss >> nodeNumber >> node;
-					nodes.emplace(nodeNumber, node);
+					m_nodes.emplace(nodeNumber, node);
 				}
 				else if (curTag == FEM::IO::TAG::MATERIALS)
 				{
 					Material material;
 					iss >> material;
-					materialCollection.insert(material);
+					m_materialCollection.insert(material);
 				}
 				else if (curTag == FEM::IO::TAG::FINITE_ELEMENTS)
 				{
@@ -179,8 +140,8 @@ void FiniteElementModel<DIM>::ReadData(fs::path path, FEM::IO_FORMAT inputFormat
 					std::string type;
 					iss >> number >> type;
 
-					auto it = fe_type.find(type);
-					if (it == std::end(fe_type))
+					auto it2 = fe_type.find(type);
+					if (it2 == fe_type.end())
 					{
 						std::ostringstream os;
 						os << "Wrong FE type: \"" << type << "\" parsed from string \"" << iss.str()
@@ -188,8 +149,8 @@ void FiniteElementModel<DIM>::ReadData(fs::path path, FEM::IO_FORMAT inputFormat
 						throw std::runtime_error(os.str());
 					}
 
-					size_t dim = it->second.first;
-					size_t nodes = it->second.second;
+					size_t dim = it2->second.first;
+					size_t nodes = it2->second.second;
 					shared_ptr<FiniteElementBase> finiteElement = CreateFiniteElement(dim, nodes);
 
 					try
@@ -204,7 +165,7 @@ void FiniteElementModel<DIM>::ReadData(fs::path path, FEM::IO_FORMAT inputFormat
 						throw std::runtime_error(err_msg.str());
 					}
 
-					finiteElements.emplace(number, finiteElement);
+					m_finiteElements.emplace(number, finiteElement);
 				}
 				++lineNumber;
 			}
@@ -227,7 +188,7 @@ void FiniteElementModel<DIM>::ReadGenericFEEntry(
 	for (size_t i = 0; i < nodep.size(); ++i)
 	{
 		is >> nodep[i];
-		if (nodes.find(nodep[i]) == std::end(nodes))
+		if (m_nodes.find(nodep[i]) == m_nodes.end())
 		{
 			std::ostringstream os;
 			os << "Node with number \"" << nodep[i] << "\" does not exist";
@@ -240,8 +201,8 @@ void FiniteElementModel<DIM>::ReadGenericFEEntry(
 	std::string materialName;
 	is >> materialName;
 
-	auto it = materialCollection.find(materialName);
-	if (it == std::end(materialCollection))
+	auto it = m_materialCollection.find(materialName);
+	if (it == m_materialCollection.end())
 	{
 		std::ostringstream os;
 		os << "Unknown material \"" << materialName << "\" found during creation of FE";
@@ -251,7 +212,7 @@ void FiniteElementModel<DIM>::ReadGenericFEEntry(
 	finiteElement->SetMaterial(it);
 }
 
-template<>
+template <>
 void FiniteElementModel<3>::ReadSpecFEEntry(
 	std::istream& is, std::shared_ptr<FiniteElementBase> finiteElement)
 {

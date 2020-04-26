@@ -7,9 +7,6 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{3616b21d-c5a8-47b5-8087-c45b5d824635}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tests\src">
-      <UniqueIdentifier>{e044346f-96fc-4f1a-a91e-ae7021b20087}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Math\src">
       <UniqueIdentifier>{a042cad9-40fd-459d-8850-581125048539}</UniqueIdentifier>
     </Filter>
@@ -28,104 +25,106 @@
     <Filter Include="App\src">
       <UniqueIdentifier>{bf67a97b-4e9c-40c0-afb5-5fed4c7d98e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="App\Components">
-      <UniqueIdentifier>{cfcdcdae-69ad-4dba-9ede-77b8cee144ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="App\Components\src">
-      <UniqueIdentifier>{450bb201-66cb-4590-b74f-2194629c3783}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tests3dIntegr.cpp">
-      <Filter>Tests\src</Filter>
-    </ClCompile>
-    <ClCompile Include="tests.cpp">
-      <Filter>Tests\src</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="tests2dIntegr.cpp">
-      <Filter>Tests\src</Filter>
-    </ClCompile>
-    <ClCompile Include="tests1dIntegr.cpp">
-      <Filter>Tests\src</Filter>
-    </ClCompile>
-    <ClCompile Include="auxiliary.cpp">
-      <Filter>Misc\src</Filter>
-    </ClCompile>
-    <ClCompile Include="fem_chekhov_3d_input.cpp">
-      <Filter>Tests\src</Filter>
-    </ClCompile>
-    <ClCompile Include="numeric_math.cpp">
-      <Filter>Math\src</Filter>
-    </ClCompile>
-    <ClCompile Include="GaussIntegr.cpp">
-      <Filter>Math\src</Filter>
-    </ClCompile>
-    <ClCompile Include="app_constants.cpp">
+    <ClCompile Include="src\app_constants.cpp">
       <Filter>App\src</Filter>
     </ClCompile>
-    <ClCompile Include="fem.cpp">
-      <Filter>App\Components\src</Filter>
+    <ClCompile Include="src\auxiliary.cpp">
+      <Filter>Misc\src</Filter>
     </ClCompile>
-    <ClCompile Include="material.cpp">
-      <Filter>App\Components\src</Filter>
+    <ClCompile Include="src\fem.cpp">
+      <Filter>App\src</Filter>
     </ClCompile>
-    <ClCompile Include="testGaussIntegrBasic.cpp">
-      <Filter>Tests\src</Filter>
+    <ClCompile Include="src\numeric_math.cpp">
+      <Filter>Math\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>App\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cmdLineParams.cpp">
+      <Filter>App\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GaussIntegr.cpp">
+      <Filter>Math\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\material.cpp">
+      <Filter>App\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\fem_chekhov_3d_inputTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\GaussIntegrBasicTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\AllTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\1dIntegrTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\2dIntegrTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\3dIntegrTest.cpp">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tests.hpp">
-      <Filter>Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="test_runner.hpp">
-      <Filter>Debug Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="profile.hpp">
-      <Filter>Debug Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="point3d.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="numeric_math.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="math_constants.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="auxiliary.hpp">
+    <ClInclude Include="include\auxiliary.hpp">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="point2d.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="point1d.hpp">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="stl_containers_read.hpp">
-      <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="stl_containers_write.hpp">
-      <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.hpp" />
-    <ClInclude Include="app_constants.hpp">
+    <ClInclude Include="include\app_constants.hpp">
       <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="fem.hpp">
-      <Filter>App\Components</Filter>
+    <ClInclude Include="include\fem.hpp">
+      <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="finite_element.hpp">
-      <Filter>App\Components</Filter>
+    <ClInclude Include="include\profile.hpp">
+      <Filter>Debug Tools</Filter>
     </ClInclude>
-    <ClInclude Include="material.hpp">
-      <Filter>App\Components</Filter>
+    <ClInclude Include="include\test_runner.h">
+      <Filter>Debug Tools</Filter>
     </ClInclude>
-    <ClInclude Include="GaussIntegrWrapper.hpp">
+    <ClInclude Include="include\tests.hpp">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="include\point3d.hpp">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="GaussIntegr.hpp">
+    <ClInclude Include="include\point1d.hpp">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\point2d.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\numeric_math.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math_constants.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cmdLineParams.hpp">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GaussIntegr.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GaussIntegrWrapper.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stl_containers_read.hpp">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stl_containers_write.hpp">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\finite_element.hpp">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdafx.hpp" />
+    <ClInclude Include="include\material.hpp">
+      <Filter>App</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

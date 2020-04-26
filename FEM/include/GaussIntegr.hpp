@@ -82,12 +82,12 @@ struct GaussCoef1D<1>  // specialization of explicit constant values for orders 
 	template <int>
 	static real_t x()
 	{
-		return 0.l;
+		return 0.;
 	}
 	template <int>
 	static real_t w()
 	{
-		return 2.l;
+		return 2.;
 	}
 	static real_t x(int)
 	{
@@ -114,7 +114,7 @@ public:
 	template <int>
 	static real_t w()
 	{
-		return 1.l;
+		return 1.;
 	}
 	static real_t x(int);
 	static real_t w(int);
@@ -124,7 +124,7 @@ struct GaussCoef1D<2>::num<0>
 {
 	static real_t x()
 	{
-		return -1.l / std::sqrt(3.l);
+		return -1. / std::sqrt(3.);
 	}
 };
 template <>
@@ -132,7 +132,7 @@ struct GaussCoef1D<2>::num<1>
 {
 	static real_t x()
 	{
-		return 1.l / std::sqrt(3.l);
+		return 1. / std::sqrt(3.);
 	}
 };
 inline real_t GaussCoef1D<2>::x(int i_)
@@ -170,11 +170,11 @@ struct GaussCoef1D<3>::num<0>
 {
 	static real_t x()
 	{
-		return -std::sqrt(0.6l);
+		return -std::sqrt(0.6);
 	}
 	static real_t w()
 	{
-		return 5.l / 9.l;
+		return 5. / 9.;
 	}
 };
 template <>
@@ -182,11 +182,11 @@ struct GaussCoef1D<3>::num<1>
 {
 	static real_t x()
 	{
-		return 0.l;
+		return 0.;
 	}
 	static real_t w()
 	{
-		return 8.l / 9.l;
+		return 8. / 9.;
 	}
 };
 template <>
@@ -194,11 +194,11 @@ struct GaussCoef1D<3>::num<2>
 {
 	static real_t x()
 	{
-		return std::sqrt(0.6l);
+		return std::sqrt(0.6);
 	}
 	static real_t w()
 	{
-		return 5.l / 9.l;
+		return 5. / 9.;
 	}
 };
 inline real_t GaussCoef1D<3>::x(int i_)
@@ -236,11 +236,11 @@ struct GaussCoef1D<4>::num<0>
 {
 	static real_t x()
 	{
-		return -std::sqrt((3.l + std::sqrt(4.8l)) / 7.l);
+		return -std::sqrt((3. + std::sqrt(4.8)) / 7.);
 	}
 	static real_t w()
 	{
-		return 0.5l - std::sqrt(30.l) / 36.l;
+		return 0.5 - std::sqrt(30.) / 36.;
 	}
 };
 template <>
@@ -248,11 +248,11 @@ struct GaussCoef1D<4>::num<1>
 {
 	static real_t x()
 	{
-		return -std::sqrt((3.l - std::sqrt(4.8l)) / 7.l);
+		return -std::sqrt((3. - std::sqrt(4.8)) / 7.);
 	}
 	static real_t w()
 	{
-		return 0.5l + std::sqrt(30.l) / 36.l;
+		return 0.5 + std::sqrt(30.) / 36.;
 	}
 };
 template <>
@@ -260,11 +260,11 @@ struct GaussCoef1D<4>::num<2>
 {
 	static real_t x()
 	{
-		return std::sqrt((3.l - std::sqrt(4.8l)) / 7.l);
+		return std::sqrt((3. - std::sqrt(4.8)) / 7.);
 	}
 	static real_t w()
 	{
-		return 0.5l + std::sqrt(30.l) / 36.l;
+		return 0.5 + std::sqrt(30.) / 36.;
 	}
 };
 template <>
@@ -272,11 +272,11 @@ struct GaussCoef1D<4>::num<3>
 {
 	static real_t x()
 	{
-		return std::sqrt((3.l + std::sqrt(4.8l)) / 7.l);
+		return std::sqrt((3. + std::sqrt(4.8)) / 7.);
 	}
 	static real_t w()
 	{
-		return 0.5l - std::sqrt(30.l) / 36.l;
+		return 0.5 - std::sqrt(30.) / 36.;
 	}
 };
 inline real_t GaussCoef1D<4>::x(int i_)
@@ -314,11 +314,11 @@ struct GaussCoef1D<5>::num<0>
 {
 	static real_t x()
 	{
-		return -std::sqrt(5.l + std::sqrt(40.l / 7.l)) / 3.l;
+		return -std::sqrt(5. + std::sqrt(40. / 7.)) / 3.;
 	}
 	static real_t w()
 	{
-		return (16.1l - std::sqrt(29.575l)) / 45.l;
+		return (16.1 - std::sqrt(29.575)) / 45.;
 	}
 };
 template <>
@@ -326,11 +326,11 @@ struct GaussCoef1D<5>::num<1>
 {
 	static real_t x()
 	{
-		return -std::sqrt(5.l - std::sqrt(40.l / 7.l)) / 3.l;
+		return -std::sqrt(5. - std::sqrt(40. / 7.)) / 3.;
 	}
 	static real_t w()
 	{
-		return (16.1l + std::sqrt(29.575l)) / 45.l;
+		return (16.1 + std::sqrt(29.575)) / 45.;
 	}
 };
 template <>
@@ -338,11 +338,11 @@ struct GaussCoef1D<5>::num<2>
 {
 	static real_t x()
 	{
-		return 0.l;
+		return 0.;
 	}
 	static real_t w()
 	{
-		return 128.l / 225.l;
+		return 128. / 225.;
 	}
 };
 template <>
@@ -350,11 +350,11 @@ struct GaussCoef1D<5>::num<3>
 {
 	static real_t x()
 	{
-		return std::sqrt(5.l - std::sqrt(40.l / 7.l)) / 3.l;
+		return std::sqrt(5. - std::sqrt(40. / 7.)) / 3.;
 	}
 	static real_t w()
 	{
-		return (16.1l + std::sqrt(29.575l)) / 45.l;
+		return (16.1 + std::sqrt(29.575)) / 45.;
 	}
 };
 template <>
@@ -362,11 +362,11 @@ struct GaussCoef1D<5>::num<4>
 {
 	static real_t x()
 	{
-		return std::sqrt(5.l + std::sqrt(40.l / 7.l)) / 3.l;
+		return std::sqrt(5. + std::sqrt(40. / 7.)) / 3.;
 	}
 	static real_t w()
 	{
-		return (16.1l - std::sqrt(29.575l)) / 45.l;
+		return (16.1 - std::sqrt(29.575)) / 45.;
 	}
 };
 inline real_t GaussCoef1D<5>::x(int i_)
@@ -513,7 +513,7 @@ struct fFunArgAdapter<1, Targ, Tresult, FUN>
 {
 	FUN f;
 	mutable Targ coord;
-	fFunArgAdapter(FUN f_) : f(f_), coord(0.l)
+	fFunArgAdapter(FUN f_) : f(f_), coord(0.)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
@@ -541,7 +541,7 @@ struct fFunArgAdapter<2, Targ, Tresult, FUN>
 {
 	FUN f;
 	mutable Targ coord;
-	fFunArgAdapter(FUN f_) : f(f_), coord(0.l)
+	fFunArgAdapter(FUN f_) : f(f_), coord(0.)
 	{
 	}
 	Tresult operator()(const real_t* args_) const
@@ -665,7 +665,7 @@ struct fAccumulate_unrolled
 template <typename T, typename Tret, typename FUN>
 struct fAccumulate_unrolled<T, 0, Tret, FUN>
 {
-	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
+	static Tret Do(const T* /*BEGIN_*/, const Tret& prev_sum_, FUN /*fun_*/)
 	{
 		return prev_sum_;
 	}
@@ -780,8 +780,7 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integ
 	template <typename Tret, typename FUN>
 	Tret ByPlus_ArrArg(FUN f_) const
 	{
-		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(
-			*this, Tret(0.l), weighted_plus(f_));
+		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(*this, Tret(0.), weighted_plus(f_));
 	}  //-------
 	template <typename Tret, typename FUN>
 	Tret& ByPlusAssgn_ArrArg(FUN f_, Tret& result_) const
@@ -799,7 +798,7 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integ
 	Tret ByPlus(FUN f_) const
 	{
 		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(
-			*this, Tret(0.l), weighted_plus(AdaptArgsToArray<DIM, Targ, Tret>(f_)));
+			*this, Tret(0.), weighted_plus(AdaptArgsToArray<DIM, Targ, Tret>(f_)));
 	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
@@ -837,7 +836,7 @@ struct fIntegrate<1, ORD>
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
-		Tret result(0.l);
+		Tret result(0.);
 		for (int i = 0; i < ORD; ++i) result = result + f_(Coeffs[i].coord(1)) * Coeffs[i].weight();
 		return result;
 	}  //-------
@@ -870,7 +869,7 @@ struct fIntegrate<2, ORD>
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
-		Tret result(0.l);
+		Tret result(0.);
 		//    AdaptArgsToArray<2,Targ,Tret> f(f_);  // - error in g++: expected ';' before 'f'
 		for (int i = 0, j; i < ORD; ++i)
 			for (j = 0; j < ORD; ++j)
@@ -915,7 +914,7 @@ struct fIntegrate<3, ORD>
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
-		Tret result(0.l);
+		Tret result(0.);
 		//    AdaptArgsToArray<3,Targ,Tret> f(f_);
 		for (int i = 0, j, k; i < ORD; ++i)
 			for (j = 0; j < ORD; ++j)

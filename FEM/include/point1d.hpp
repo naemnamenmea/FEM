@@ -11,32 +11,32 @@ public:
 
 	point1d()
 	{
-		elems[0] = T{};
+		m_elems[0] = T{};
 	}
 
 	point1d(T x)
 	{
-		elems[0] = x;
+		m_elems[0] = x;
 	}
 
 	const T x() const
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	T& x()
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	operator T*()
 	{
-		return elems;
+		return m_elems;
 	}
 
 	operator T const*() const
 	{
-		return elems;
+		return m_elems;
 	}
 
 	T operator*(const point1d<T>& p) const
@@ -104,7 +104,7 @@ public:
 	}
 
 private:
-	T elems[1];
+	T m_elems[1];
 };
 
 template class point1d<double>;

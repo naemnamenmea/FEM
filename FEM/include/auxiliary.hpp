@@ -4,11 +4,11 @@
 #include <stdexcept>
 #include "math_constants.hpp"
 
-void TrimFront(std::string_view& sv, char symbol = ' ');
+std::string_view& TrimFront(std::string_view& str, char delimiter = ' ');
 
-void TrimBack(std::string_view& sv, char symbol = ' ');
+std::string_view& TrimBack(std::string_view& str, char delimiter = ' ');
 
-void Trim(std::string_view& sv, char symbol = ' ');
+std::string_view& Trim(std::string_view& str, char delimiter = ' ');
 
 template <typename Container>
 bool CompareContainersEqualityWithTolerance(
@@ -19,11 +19,11 @@ bool CompareContainersEqualityWithTolerance(
 		throw std::runtime_error("Containers must be equal in size");
 	}
 
-	for (auto it = lhs.begin(); it != std::end(lhs); ++it)
+	for (auto it = lhs.begin(); it != lhs.end(); ++it)
 	{
 		auto offset = std::distance(begin(lhs), it);
 
-		if (!isEqual(*it, *std::next(begin(rhs), offset)))
+		if (!mathdef::isEqual(*it, *std::next(begin(rhs), offset), tolerance))
 		{
 			return false;
 		}

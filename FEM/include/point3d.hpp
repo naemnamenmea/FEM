@@ -11,63 +11,63 @@ public:
 
 	point3d()
 	{
-		elems[0] = T{};
-		elems[1] = T{};
-		elems[2] = T{};
+		m_elems[0] = T{};
+		m_elems[1] = T{};
+		m_elems[2] = T{};
 	}
 
 	point3d(T value)
 	{
-		elems[0] = value;
-		elems[1] = value;
-		elems[2] = value;
+		m_elems[0] = value;
+		m_elems[1] = value;
+		m_elems[2] = value;
 	}
 
 	point3d(T x, T y, T z)
 	{
-		elems[0] = x;
-		elems[1] = y;
-		elems[2] = z;
+		m_elems[0] = x;
+		m_elems[1] = y;
+		m_elems[2] = z;
 	}
 
 	const T x() const
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	const T y() const
 	{
-		return elems[1];
+		return m_elems[1];
 	}
 
 	const T z() const
 	{
-		return elems[2];
+		return m_elems[2];
 	}
 
 	T& x()
 	{
-		return elems[0];
+		return m_elems[0];
 	}
 
 	T& y()
 	{
-		return elems[1];
+		return m_elems[1];
 	}
 
 	T& z()
 	{
-		return elems[2];
+		return m_elems[2];
 	}
 
 	operator T*()
 	{
-		return elems;
+		return m_elems;
 	}
 
 	operator T const*() const
 	{
-		return elems;
+		return m_elems;
 	}
 
 	T operator*(const point3d<T>& p) const
@@ -147,7 +147,7 @@ public:
 	}
 
 private:
-	T elems[3];
+	T m_elems[3];
 };
 
 template <class T>

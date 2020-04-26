@@ -4,7 +4,7 @@
 
 std::istream& operator>>(std::istream& is, Material::Properties& prop)
 {
-	is >> prop.density;
+	is >> prop.m_density;
 	return is;
 }
 
@@ -14,7 +14,7 @@ std::istream& operator>>(std::istream& is, Material::Properties& prop)
  */
 std::istream& operator>>(std::istream& is, Material& material)
 {
-	is >> material.name >> material.properties;
+	is >> material.m_name >> material.m_properties;
 	return is;
 }
 
@@ -22,6 +22,6 @@ Material::Material()
 {
 }
 
-Material::Material(std::string name) : name(std::move(name))
+Material::Material(std::string name) : m_name(std::move(name))
 {
 }
