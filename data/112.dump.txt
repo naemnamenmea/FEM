@@ -1,0 +1,333 @@
+FE-model
+Nodes:
+#	X	Y	Z	(X	Y	Z) - fixed DOFs
+1	0	-10	0	1	1	1
+2	0	-5	0	1	1	1
+3	0	0	0	1	1	1
+4	0	5	0	1	1	1
+5	0	10	0	1	1	1
+6	4.94	-9.753	0	0	0	1
+7	4.94	-4.88	0	0	0	1
+8	4.94	0	0	0	0	1
+9	4.94	4.88	0	0	0	1
+10	4.94	9.753	0	0	0	1
+11	9.75	-9.5125	0	0	0	1
+12	9.75	-4.76	0	0	0	1
+13	9.75	0	0	0	0	1
+14	9.75	4.76	0	0	0	1
+15	9.75	9.5125	0	0	0	1
+16	14.45	-9.2775	0	0	0	1
+17	14.45	-4.64	0	0	0	1
+18	14.45	0	0	0	0	1
+19	14.45	4.64	0	0	0	1
+20	14.45	9.2775	0	0	0	1
+21	19.03	-9.0485	0	0	0	1
+22	19.03	-4.52	0	0	0	1
+23	19.03	0	0	0	0	1
+24	19.03	4.52	0	0	0	1
+25	19.03	9.0485	0	0	0	1
+26	23.5	-8.825	0	0	0	1
+27	23.5	-4.41	0	0	0	1
+28	23.5	0	0	0	0	1
+29	23.5	4.41	0	0	0	1
+30	23.5	8.825	0	0	0	1
+31	27.86	-8.607	0	0	0	1
+32	27.86	-4.3	0	0	0	1
+33	27.86	0	0	0	0	1
+34	27.86	4.3	0	0	0	1
+35	27.86	8.607	0	0	0	1
+36	32.11	-8.3945	0	0	0	1
+37	32.11	-4.2	0	0	0	1
+38	32.11	0	0	0	0	1
+39	32.11	4.2	0	0	0	1
+40	32.11	8.3945	0	0	0	1
+41	36.26	-8.187	0	0	0	1
+42	36.26	-4.09	0	0	0	1
+43	36.26	0	0	0	0	1
+44	36.26	4.09	0	0	0	1
+45	36.26	8.187	0	0	0	1
+46	40.3	-7.985	0	0	0	1
+47	40.3	-3.99	0	0	0	1
+48	40.3	0	0	0	0	1
+49	40.3	3.99	0	0	0	1
+50	40.3	7.985	0	0	0	1
+51	44.24	-7.788	0	0	0	1
+52	44.24	-3.89	0	0	0	1
+53	44.24	0	0	0	0	1
+54	44.24	3.89	0	0	0	1
+55	44.24	7.788	0	0	0	1
+56	48.09	-7.5955	0	0	0	1
+57	48.09	-3.8	0	0	0	1
+58	48.09	0	0	0	0	1
+59	48.09	3.8	0	0	0	1
+60	48.09	7.5955	0	0	0	1
+61	51.84	-7.408	0	0	0	1
+62	51.84	-3.7	0	0	0	1
+63	51.84	0	0	0	0	1
+64	51.84	3.7	0	0	0	1
+65	51.84	7.408	0	0	0	1
+66	55.5	-7.225	0	0	0	1
+67	55.5	-3.61	0	0	0	1
+68	55.5	0	0	0	0	1
+69	55.5	3.61	0	0	0	1
+70	55.5	7.225	0	0	0	1
+71	59.06	-7.047	0	0	0	1
+72	59.06	-3.52	0	0	0	1
+73	59.06	0	0	0	0	1
+74	59.06	3.52	0	0	0	1
+75	59.06	7.047	0	0	0	1
+76	62.54	-6.873	0	0	0	1
+77	62.54	-3.44	0	0	0	1
+78	62.54	0	0	0	0	1
+79	62.54	3.44	0	0	0	1
+80	62.54	6.873	0	0	0	1
+81	65.94	-6.703	0	0	0	1
+82	65.94	-3.35	0	0	0	1
+83	65.94	0	0	0	0	1
+84	65.94	3.35	0	0	0	1
+85	65.94	6.703	0	0	0	1
+86	69.25	-6.5375	0	0	0	1
+87	69.25	-3.27	0	0	0	1
+88	69.25	0	0	0	0	1
+89	69.25	3.27	0	0	0	1
+90	69.25	6.5375	0	0	0	1
+91	72.48	-6.376	0	0	0	1
+92	72.48	-3.19	0	0	0	1
+93	72.48	0	0	0	0	1
+94	72.48	3.19	0	0	0	1
+95	72.48	6.376	0	0	0	1
+96	75.63	-6.2185	0	0	0	1
+97	75.63	-3.11	0	0	0	1
+98	75.63	0	0	0	0	1
+99	75.63	3.11	0	0	0	1
+100	75.63	6.2185	0	0	0	1
+101	78.7	-6.065	0	0	0	1
+102	78.7	-3.03	0	0	0	1
+103	78.7	0	0	0	0	1
+104	78.7	3.03	0	0	0	1
+105	78.7	6.065	0	0	0	1
+106	81.69	-5.9155	0	0	0	1
+107	81.69	-2.96	0	0	0	1
+108	81.69	0	0	0	0	1
+109	81.69	2.96	0	0	0	1
+110	81.69	5.9155	0	0	0	1
+111	84.61	-5.7695	0	0	0	1
+112	84.61	-2.88	0	0	0	1
+113	84.61	0	0	0	0	1
+114	84.61	2.88	0	0	0	1
+115	84.61	5.7695	0	0	0	1
+116	87.46	-5.627	0	0	0	1
+117	87.46	-2.81	0	0	0	1
+118	87.46	0	0	0	0	1
+119	87.46	2.81	0	0	0	1
+120	87.46	5.627	0	0	0	1
+121	90.24	-5.488	0	0	0	1
+122	90.24	-2.74	0	0	0	1
+123	90.24	0	0	0	0	1
+124	90.24	2.74	0	0	0	1
+125	90.24	5.488	0	0	0	1
+126	92.95	-5.3525	0	0	0	1
+127	92.95	-2.68	0	0	0	1
+128	92.95	0	0	0	0	1
+129	92.95	2.68	0	0	0	1
+130	92.95	5.3525	0	0	0	1
+131	95.59	-5.2205	0	0	0	1
+132	95.59	-2.61	0	0	0	1
+133	95.59	0	0	0	0	1
+134	95.59	2.61	0	0	0	1
+135	95.59	5.2205	0	0	0	1
+136	98.17	-5.0915	0	0	0	1
+137	98.17	-2.55	0	0	0	1
+138	98.17	0	0	0	0	1
+139	98.17	2.55	0	0	0	1
+140	98.17	5.0915	0	0	0	1
+141	100	-5	0	0	0	1
+142	100	-2.5	0	0	0	1
+143	100	0	0	0	0	1
+144	100	2.5	0	0	0	1
+145	100	5	0	0	0	1
+
+Materials:
+#	Type	Name	Params
+1 IsotropicLinearElastic	Al_Alloy	Density = 0.0028	E = 710000		Nu = 0.3
+2 IsotropicLinearElastic	Steel	Density = 0.0078	E = 2e+06		Nu = 0.3
+
+Finite elements:
+#	Type	Material	Nodes	Params
+1	IsotropicLinearElastic	Al_Alloy	1 2 7 6 	Thick = 0.1	2d-Strain
+2	IsotropicLinearElastic	Al_Alloy	2 3 8 7 	Thick = 0.1	2d-Strain
+3	IsotropicLinearElastic	Al_Alloy	3 4 9 8 	Thick = 0.1	2d-Strain
+4	IsotropicLinearElastic	Al_Alloy	4 5 10 9 	Thick = 0.1	2d-Strain
+5	IsotropicLinearElastic	Al_Alloy	6 7 12 11 	Thick = 0.1	2d-Strain
+6	IsotropicLinearElastic	Al_Alloy	7 8 13 12 	Thick = 0.1	2d-Strain
+7	IsotropicLinearElastic	Al_Alloy	8 9 14 13 	Thick = 0.1	2d-Strain
+8	IsotropicLinearElastic	Al_Alloy	9 10 15 14 	Thick = 0.1	2d-Strain
+9	IsotropicLinearElastic	Al_Alloy	11 12 17 16 	Thick = 0.1	2d-Strain
+10	IsotropicLinearElastic	Al_Alloy	12 13 18 17 	Thick = 0.1	2d-Strain
+11	IsotropicLinearElastic	Al_Alloy	13 14 19 18 	Thick = 0.1	2d-Strain
+12	IsotropicLinearElastic	Al_Alloy	14 15 20 19 	Thick = 0.1	2d-Strain
+13	IsotropicLinearElastic	Al_Alloy	16 17 22 21 	Thick = 0.1	2d-Strain
+14	IsotropicLinearElastic	Al_Alloy	17 18 23 22 	Thick = 0.1	2d-Strain
+15	IsotropicLinearElastic	Al_Alloy	18 19 24 23 	Thick = 0.1	2d-Strain
+16	IsotropicLinearElastic	Al_Alloy	19 20 25 24 	Thick = 0.1	2d-Strain
+17	IsotropicLinearElastic	Al_Alloy	21 22 27 26 	Thick = 0.1	2d-Strain
+18	IsotropicLinearElastic	Al_Alloy	22 23 28 27 	Thick = 0.1	2d-Strain
+19	IsotropicLinearElastic	Al_Alloy	23 24 29 28 	Thick = 0.1	2d-Strain
+20	IsotropicLinearElastic	Al_Alloy	24 25 30 29 	Thick = 0.1	2d-Strain
+21	IsotropicLinearElastic	Al_Alloy	26 27 32 31 	Thick = 0.1	2d-Strain
+22	IsotropicLinearElastic	Al_Alloy	27 28 33 32 	Thick = 0.1	2d-Strain
+23	IsotropicLinearElastic	Al_Alloy	28 29 34 33 	Thick = 0.1	2d-Strain
+24	IsotropicLinearElastic	Al_Alloy	29 30 35 34 	Thick = 0.1	2d-Strain
+25	IsotropicLinearElastic	Al_Alloy	31 32 37 36 	Thick = 0.1	2d-Strain
+26	IsotropicLinearElastic	Al_Alloy	32 33 38 37 	Thick = 0.1	2d-Strain
+27	IsotropicLinearElastic	Al_Alloy	33 34 39 38 	Thick = 0.1	2d-Strain
+28	IsotropicLinearElastic	Al_Alloy	34 35 40 39 	Thick = 0.1	2d-Strain
+29	IsotropicLinearElastic	Al_Alloy	36 37 42 41 	Thick = 0.1	2d-Strain
+30	IsotropicLinearElastic	Al_Alloy	37 38 43 42 	Thick = 0.1	2d-Strain
+31	IsotropicLinearElastic	Al_Alloy	38 39 44 43 	Thick = 0.1	2d-Strain
+32	IsotropicLinearElastic	Al_Alloy	39 40 45 44 	Thick = 0.1	2d-Strain
+33	IsotropicLinearElastic	Al_Alloy	41 42 47 46 	Thick = 0.1	2d-Strain
+34	IsotropicLinearElastic	Al_Alloy	42 43 48 47 	Thick = 0.1	2d-Strain
+35	IsotropicLinearElastic	Al_Alloy	43 44 49 48 	Thick = 0.1	2d-Strain
+36	IsotropicLinearElastic	Al_Alloy	44 45 50 49 	Thick = 0.1	2d-Strain
+37	IsotropicLinearElastic	Al_Alloy	46 47 52 51 	Thick = 0.1	2d-Strain
+38	IsotropicLinearElastic	Al_Alloy	47 48 53 52 	Thick = 0.1	2d-Strain
+39	IsotropicLinearElastic	Al_Alloy	48 49 54 53 	Thick = 0.1	2d-Strain
+40	IsotropicLinearElastic	Al_Alloy	49 50 55 54 	Thick = 0.1	2d-Strain
+41	IsotropicLinearElastic	Al_Alloy	51 52 57 56 	Thick = 0.1	2d-Strain
+42	IsotropicLinearElastic	Al_Alloy	52 53 58 57 	Thick = 0.1	2d-Strain
+43	IsotropicLinearElastic	Al_Alloy	53 54 59 58 	Thick = 0.1	2d-Strain
+44	IsotropicLinearElastic	Al_Alloy	54 55 60 59 	Thick = 0.1	2d-Strain
+45	IsotropicLinearElastic	Al_Alloy	56 57 62 61 	Thick = 0.1	2d-Strain
+46	IsotropicLinearElastic	Al_Alloy	57 58 63 62 	Thick = 0.1	2d-Strain
+47	IsotropicLinearElastic	Al_Alloy	58 59 64 63 	Thick = 0.1	2d-Strain
+48	IsotropicLinearElastic	Al_Alloy	59 60 65 64 	Thick = 0.1	2d-Strain
+49	IsotropicLinearElastic	Al_Alloy	61 62 67 66 	Thick = 0.1	2d-Strain
+50	IsotropicLinearElastic	Al_Alloy	62 63 68 67 	Thick = 0.1	2d-Strain
+51	IsotropicLinearElastic	Al_Alloy	63 64 69 68 	Thick = 0.1	2d-Strain
+52	IsotropicLinearElastic	Al_Alloy	64 65 70 69 	Thick = 0.1	2d-Strain
+53	IsotropicLinearElastic	Al_Alloy	66 67 72 71 	Thick = 0.1	2d-Strain
+54	IsotropicLinearElastic	Al_Alloy	67 68 73 72 	Thick = 0.1	2d-Strain
+55	IsotropicLinearElastic	Al_Alloy	68 69 74 73 	Thick = 0.1	2d-Strain
+56	IsotropicLinearElastic	Al_Alloy	69 70 75 74 	Thick = 0.1	2d-Strain
+57	IsotropicLinearElastic	Al_Alloy	71 72 77 76 	Thick = 0.1	2d-Strain
+58	IsotropicLinearElastic	Al_Alloy	72 73 78 77 	Thick = 0.1	2d-Strain
+59	IsotropicLinearElastic	Al_Alloy	73 74 79 78 	Thick = 0.1	2d-Strain
+60	IsotropicLinearElastic	Al_Alloy	74 75 80 79 	Thick = 0.1	2d-Strain
+61	IsotropicLinearElastic	Al_Alloy	76 77 82 81 	Thick = 0.1	2d-Strain
+62	IsotropicLinearElastic	Al_Alloy	77 78 83 82 	Thick = 0.1	2d-Strain
+63	IsotropicLinearElastic	Al_Alloy	78 79 84 83 	Thick = 0.1	2d-Strain
+64	IsotropicLinearElastic	Al_Alloy	79 80 85 84 	Thick = 0.1	2d-Strain
+65	IsotropicLinearElastic	Al_Alloy	81 82 87 86 	Thick = 0.1	2d-Strain
+66	IsotropicLinearElastic	Al_Alloy	82 83 88 87 	Thick = 0.1	2d-Strain
+67	IsotropicLinearElastic	Al_Alloy	83 84 89 88 	Thick = 0.1	2d-Strain
+68	IsotropicLinearElastic	Al_Alloy	84 85 90 89 	Thick = 0.1	2d-Strain
+69	IsotropicLinearElastic	Al_Alloy	86 87 92 91 	Thick = 0.1	2d-Strain
+70	IsotropicLinearElastic	Al_Alloy	87 88 93 92 	Thick = 0.1	2d-Strain
+71	IsotropicLinearElastic	Al_Alloy	88 89 94 93 	Thick = 0.1	2d-Strain
+72	IsotropicLinearElastic	Al_Alloy	89 90 95 94 	Thick = 0.1	2d-Strain
+73	IsotropicLinearElastic	Al_Alloy	91 92 97 96 	Thick = 0.1	2d-Strain
+74	IsotropicLinearElastic	Al_Alloy	92 93 98 97 	Thick = 0.1	2d-Strain
+75	IsotropicLinearElastic	Al_Alloy	93 94 99 98 	Thick = 0.1	2d-Strain
+76	IsotropicLinearElastic	Al_Alloy	94 95 100 99 	Thick = 0.1	2d-Strain
+77	IsotropicLinearElastic	Al_Alloy	96 97 102 101 	Thick = 0.1	2d-Strain
+78	IsotropicLinearElastic	Al_Alloy	97 98 103 102 	Thick = 0.1	2d-Strain
+79	IsotropicLinearElastic	Al_Alloy	98 99 104 103 	Thick = 0.1	2d-Strain
+80	IsotropicLinearElastic	Al_Alloy	99 100 105 104 	Thick = 0.1	2d-Strain
+81	IsotropicLinearElastic	Al_Alloy	101 102 107 106 	Thick = 0.1	2d-Strain
+82	IsotropicLinearElastic	Al_Alloy	102 103 108 107 	Thick = 0.1	2d-Strain
+83	IsotropicLinearElastic	Al_Alloy	103 104 109 108 	Thick = 0.1	2d-Strain
+84	IsotropicLinearElastic	Al_Alloy	104 105 110 109 	Thick = 0.1	2d-Strain
+85	IsotropicLinearElastic	Al_Alloy	106 107 112 111 	Thick = 0.1	2d-Strain
+86	IsotropicLinearElastic	Al_Alloy	107 108 113 112 	Thick = 0.1	2d-Strain
+87	IsotropicLinearElastic	Al_Alloy	108 109 114 113 	Thick = 0.1	2d-Strain
+88	IsotropicLinearElastic	Al_Alloy	109 110 115 114 	Thick = 0.1	2d-Strain
+89	IsotropicLinearElastic	Al_Alloy	111 112 117 116 	Thick = 0.1	2d-Strain
+90	IsotropicLinearElastic	Al_Alloy	112 113 118 117 	Thick = 0.1	2d-Strain
+91	IsotropicLinearElastic	Al_Alloy	113 114 119 118 	Thick = 0.1	2d-Strain
+92	IsotropicLinearElastic	Al_Alloy	114 115 120 119 	Thick = 0.1	2d-Strain
+93	IsotropicLinearElastic	Al_Alloy	116 117 122 121 	Thick = 0.1	2d-Strain
+94	IsotropicLinearElastic	Al_Alloy	117 118 123 122 	Thick = 0.1	2d-Strain
+95	IsotropicLinearElastic	Al_Alloy	118 119 124 123 	Thick = 0.1	2d-Strain
+96	IsotropicLinearElastic	Al_Alloy	119 120 125 124 	Thick = 0.1	2d-Strain
+97	IsotropicLinearElastic	Al_Alloy	121 122 127 126 	Thick = 0.1	2d-Strain
+98	IsotropicLinearElastic	Al_Alloy	122 123 128 127 	Thick = 0.1	2d-Strain
+99	IsotropicLinearElastic	Al_Alloy	123 124 129 128 	Thick = 0.1	2d-Strain
+100	IsotropicLinearElastic	Al_Alloy	124 125 130 129 	Thick = 0.1	2d-Strain
+101	IsotropicLinearElastic	Al_Alloy	126 127 132 131 	Thick = 0.1	2d-Strain
+102	IsotropicLinearElastic	Al_Alloy	127 128 133 132 	Thick = 0.1	2d-Strain
+103	IsotropicLinearElastic	Al_Alloy	128 129 134 133 	Thick = 0.1	2d-Strain
+104	IsotropicLinearElastic	Al_Alloy	129 130 135 134 	Thick = 0.1	2d-Strain
+105	IsotropicLinearElastic	Al_Alloy	131 132 137 136 	Thick = 0.1	2d-Strain
+106	IsotropicLinearElastic	Al_Alloy	132 133 138 137 	Thick = 0.1	2d-Strain
+107	IsotropicLinearElastic	Al_Alloy	133 134 139 138 	Thick = 0.1	2d-Strain
+108	IsotropicLinearElastic	Al_Alloy	134 135 140 139 	Thick = 0.1	2d-Strain
+109	IsotropicLinearElastic	Al_Alloy	136 137 142 141 	Thick = 0.1	2d-Strain
+110	IsotropicLinearElastic	Al_Alloy	137 138 143 142 	Thick = 0.1	2d-Strain
+111	IsotropicLinearElastic	Al_Alloy	138 139 144 143 	Thick = 0.1	2d-Strain
+112	IsotropicLinearElastic	Al_Alloy	139 140 145 144 	Thick = 0.1	2d-Strain
+113	IsotropicLinearElastic	Steel	1 6 	Area = 1	1d-Strain
+114	IsotropicLinearElastic	Steel	6 11 	Area = 1	1d-Strain
+115	IsotropicLinearElastic	Steel	11 16 	Area = 1	1d-Strain
+116	IsotropicLinearElastic	Steel	16 21 	Area = 1	1d-Strain
+117	IsotropicLinearElastic	Steel	21 26 	Area = 1	1d-Strain
+118	IsotropicLinearElastic	Steel	26 31 	Area = 1	1d-Strain
+119	IsotropicLinearElastic	Steel	31 36 	Area = 1	1d-Strain
+120	IsotropicLinearElastic	Steel	36 41 	Area = 1	1d-Strain
+121	IsotropicLinearElastic	Steel	41 46 	Area = 1	1d-Strain
+122	IsotropicLinearElastic	Steel	46 51 	Area = 1	1d-Strain
+123	IsotropicLinearElastic	Steel	51 56 	Area = 1	1d-Strain
+124	IsotropicLinearElastic	Steel	56 61 	Area = 1	1d-Strain
+125	IsotropicLinearElastic	Steel	61 66 	Area = 1	1d-Strain
+126	IsotropicLinearElastic	Steel	66 71 	Area = 1	1d-Strain
+127	IsotropicLinearElastic	Steel	71 76 	Area = 1	1d-Strain
+128	IsotropicLinearElastic	Steel	76 81 	Area = 1	1d-Strain
+129	IsotropicLinearElastic	Steel	81 86 	Area = 1	1d-Strain
+130	IsotropicLinearElastic	Steel	86 91 	Area = 1	1d-Strain
+131	IsotropicLinearElastic	Steel	91 96 	Area = 1	1d-Strain
+132	IsotropicLinearElastic	Steel	96 101 	Area = 1	1d-Strain
+133	IsotropicLinearElastic	Steel	101 106 	Area = 1	1d-Strain
+134	IsotropicLinearElastic	Steel	106 111 	Area = 1	1d-Strain
+135	IsotropicLinearElastic	Steel	111 116 	Area = 1	1d-Strain
+136	IsotropicLinearElastic	Steel	116 121 	Area = 1	1d-Strain
+137	IsotropicLinearElastic	Steel	121 126 	Area = 1	1d-Strain
+138	IsotropicLinearElastic	Steel	126 131 	Area = 1	1d-Strain
+139	IsotropicLinearElastic	Steel	131 136 	Area = 1	1d-Strain
+140	IsotropicLinearElastic	Steel	136 141 	Area = 1	1d-Strain
+141	IsotropicLinearElastic	Steel	5 10 	Area = 1	1d-Strain
+142	IsotropicLinearElastic	Steel	10 15 	Area = 1	1d-Strain
+143	IsotropicLinearElastic	Steel	15 20 	Area = 1	1d-Strain
+144	IsotropicLinearElastic	Steel	20 25 	Area = 1	1d-Strain
+145	IsotropicLinearElastic	Steel	25 30 	Area = 1	1d-Strain
+146	IsotropicLinearElastic	Steel	30 35 	Area = 1	1d-Strain
+147	IsotropicLinearElastic	Steel	35 40 	Area = 1	1d-Strain
+148	IsotropicLinearElastic	Steel	40 45 	Area = 1	1d-Strain
+149	IsotropicLinearElastic	Steel	45 50 	Area = 1	1d-Strain
+150	IsotropicLinearElastic	Steel	50 55 	Area = 1	1d-Strain
+151	IsotropicLinearElastic	Steel	55 60 	Area = 1	1d-Strain
+152	IsotropicLinearElastic	Steel	60 65 	Area = 1	1d-Strain
+153	IsotropicLinearElastic	Steel	65 70 	Area = 1	1d-Strain
+154	IsotropicLinearElastic	Steel	70 75 	Area = 1	1d-Strain
+155	IsotropicLinearElastic	Steel	75 80 	Area = 1	1d-Strain
+156	IsotropicLinearElastic	Steel	80 85 	Area = 1	1d-Strain
+157	IsotropicLinearElastic	Steel	85 90 	Area = 1	1d-Strain
+158	IsotropicLinearElastic	Steel	90 95 	Area = 1	1d-Strain
+159	IsotropicLinearElastic	Steel	95 100 	Area = 1	1d-Strain
+160	IsotropicLinearElastic	Steel	100 105 	Area = 1	1d-Strain
+161	IsotropicLinearElastic	Steel	105 110 	Area = 1	1d-Strain
+162	IsotropicLinearElastic	Steel	110 115 	Area = 1	1d-Strain
+163	IsotropicLinearElastic	Steel	115 120 	Area = 1	1d-Strain
+164	IsotropicLinearElastic	Steel	120 125 	Area = 1	1d-Strain
+165	IsotropicLinearElastic	Steel	125 130 	Area = 1	1d-Strain
+166	IsotropicLinearElastic	Steel	130 135 	Area = 1	1d-Strain
+167	IsotropicLinearElastic	Steel	135 140 	Area = 1	1d-Strain
+168	IsotropicLinearElastic	Steel	140 145 	Area = 1	1d-Strain
+
+Loads
+Case 1	"lateral bending"
+	Node #	Force: X Y Z
+	141	0 787.5 0
+	142	0 1575 0
+	143	0 1575 0
+	144	0 1575 0
+	145	0 787.5 0

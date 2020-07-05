@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<obormot_data>
+<model id="Cube">
+   <nodes>
+      <node id="1">       <coord x="0."     y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="2">       <coord x="5."      y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="3">       <coord x="8."      y="2."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="4">       <coord x="3."      y="2."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="5">       <coord x="1."      y="2."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="6">       <coord x="6."      y="2."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="7">       <coord x="9."      y="4."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>              
+      <node id="8">       <coord x="4."      y="4."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>       
+       
+      <node id="9">       <coord x="0."      y="-12."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="10">       <coord x="5."      y="-12."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="11">       <coord x="5."      y="-10."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="12">       <coord x="0."      y="-10."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="13">       <coord x="0."      y="-12."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="14">       <coord x="5."      y="-12."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="15">       <coord x="5."      y="-10."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="16">       <coord x="0."      y="-10."      z="7."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+
+      <node id="17">       <coord x="0."      y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="18">       <coord x="3."      y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="19">       <coord x="2."      y="4."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="20">       <coord x="1."      y="3."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="21">       <coord x="0."      y="0."      z="2."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="22">       <coord x="3."      y="0."      z="2."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="23">       <coord x="2."      y="4."      z="2."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="24">       <coord x="1."      y="3."      z="2."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+
+      <node id="25">       <coord x="0."      y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="26">       <coord x="4."      y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="27">       <coord x="4."      y="2."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="28">       <coord x="0."      y="2."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="29">       <coord x="0."      y="0."      z="5."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="30">       <coord x="4."      y="0."      z="5."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="31">       <coord x="4."      y="2."      z="5."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+      <node id="32">       <coord x="0."      y="2."      z="8."/> <dof x="free"  y="free"  z="fixed"/> </node>        
+   </nodes>
+   <materials>
+      <material id="Al_Alloy" type="IsotropicLinearElastic" rho="0.0028" E="710000." nu="0.3"/>
+      <material id="Steel" type="IsotropicLinearElastic" rho="0.0078" E="2000000." nu="0.3"/>
+   </materials>
+   <finite_elements>
+      <fe id="1" type="Parallelepiped8" material="Al_Alloy" state="3D_cube"> <nodes>1 2 3 4 5 6 7 8</nodes> </fe>
+      <fe id="2" type="Parallelepiped8" material="Al_Alloy" state="3D_cube"> <nodes>9 10 11 12 13 14 15 16</nodes> </fe>
+      <fe id="3" type="Parallelepiped8" material="Al_Alloy" state="3D_cube"> <nodes>17 18 19 20 21 22 23 24</nodes> </fe>
+      <fe id="4" type="Parallelepiped8" material="Al_Alloy" state="3D_cube"> <nodes>25 26 27 28 29 30 31 32</nodes> </fe>
+   </finite_elements>
+</model>
+</obormot_data>

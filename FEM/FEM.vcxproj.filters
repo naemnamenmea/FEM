@@ -1,130 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Math">
-      <UniqueIdentifier>{c6687c3f-76cb-4902-bb2e-2c04c2dd573e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tests">
-      <UniqueIdentifier>{3616b21d-c5a8-47b5-8087-c45b5d824635}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Math\src">
-      <UniqueIdentifier>{a042cad9-40fd-459d-8850-581125048539}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Misc">
-      <UniqueIdentifier>{d8e657e6-e756-4f7b-b021-4cb30dab28c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Misc\src">
-      <UniqueIdentifier>{4d3223ee-c7bb-424e-aa9f-26c7c80537ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Debug Tools">
-      <UniqueIdentifier>{faec3044-4483-41b2-8e49-08d9aa28e402}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="App">
+    <Filter Include="src">
       <UniqueIdentifier>{cb91b3b0-f168-4003-9165-6368b2dde6ec}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="App\src">
-      <UniqueIdentifier>{bf67a97b-4e9c-40c0-afb5-5fed4c7d98e5}</UniqueIdentifier>
+    <Filter Include="include">
+      <UniqueIdentifier>{7cb9cbfd-8255-4e54-b919-03fe15beda04}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\app_constants.cpp">
-      <Filter>App\src</Filter>
+    <ClCompile Include="src\Analysis.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\auxiliary.cpp">
-      <Filter>Misc\src</Filter>
+    <ClCompile Include="src\Load.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\fem.cpp">
-      <Filter>App\src</Filter>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\numeric_math.cpp">
-      <Filter>Math\src</Filter>
+    <ClCompile Include="src\NonLAnalys.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>App\src</Filter>
+    <ClCompile Include="src\XML_Readers.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\cmdLineParams.cpp">
-      <Filter>App\src</Filter>
+    <ClCompile Include="src\VectorMatrix.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\GaussIntegr.cpp">
-      <Filter>Math\src</Filter>
+    <ClCompile Include="src\GraphTheory.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\material.cpp">
-      <Filter>App\src</Filter>
+    <ClCompile Include="src\1StepAnalysis.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\fem_chekhov_3d_inputTest.cpp">
-      <Filter>Tests</Filter>
+    <ClCompile Include="src\LinearElasticAnalysis.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\GaussIntegrBasicTest.cpp">
-      <Filter>Tests</Filter>
+    <ClCompile Include="src\MultiStepAnalysis.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\AllTests.cpp">
-      <Filter>Tests</Filter>
+    <ClCompile Include="src\FiniteElement.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\1dIntegrTest.cpp">
-      <Filter>Tests</Filter>
+    <ClCompile Include="src\FiniteElementPool.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\2dIntegrTest.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="Tests\3dIntegrTest.cpp">
-      <Filter>Tests</Filter>
+    <ClCompile Include="src\FiniteElementModel.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\auxiliary.hpp">
-      <Filter>Misc</Filter>
+    <ClInclude Include="include\VectorMatrix.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\app_constants.hpp">
-      <Filter>App</Filter>
+    <ClInclude Include="include\XML_Readers.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\fem.hpp">
-      <Filter>App</Filter>
+    <ClInclude Include="include\Structure.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\profile.hpp">
-      <Filter>Debug Tools</Filter>
+    <ClInclude Include="include\NonLAnalys.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\test_runner.h">
-      <Filter>Debug Tools</Filter>
+    <ClInclude Include="include\NameList.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\tests.hpp">
-      <Filter>App</Filter>
+    <ClInclude Include="include\Material.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\point3d.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\Load.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\point1d.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\GraphTheory.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\point2d.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\Analysis.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\numeric_math.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\1StepAnalysis.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\math_constants.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\LinearElasticAnalysis.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\cmdLineParams.hpp">
-      <Filter>App</Filter>
+    <ClInclude Include="include\MultiStepAnalysis.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\GaussIntegr.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\FiniteElement.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\GaussIntegrWrapper.hpp">
-      <Filter>Math</Filter>
+    <ClInclude Include="include\FiniteElementPool.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\stl_containers_read.hpp">
-      <Filter>Misc</Filter>
+    <ClInclude Include="include\FiniteElementModel.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\stl_containers_write.hpp">
-      <Filter>Misc</Filter>
+    <ClInclude Include="include\femDllDefinitions.hpp">
+      <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\finite_element.hpp">
-      <Filter>App</Filter>
-    </ClInclude>
-    <ClInclude Include="include\stdafx.hpp" />
-    <ClInclude Include="include\material.hpp">
-      <Filter>App</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<obormot_data>
+<model id="Conic beam (112 membranes)">
+   <nodes>
+      <node id="1">   <coord x="0."    y="-10."    z="0."/> <dof x="fixed" y="fixed" z="fixed"/> </node>
+      <node id="2">   <coord x="0."    y="-5."     z="0."/> <dof x="fixed" y="fixed" z="fixed"/> </node>
+      <node id="3">   <coord x="0."    y="0."      z="0."/> <dof x="fixed" y="fixed" z="fixed"/> </node>
+      <node id="4">   <coord x="0."    y="5."      z="0."/> <dof x="fixed" y="fixed" z="fixed"/> </node>
+      <node id="5">   <coord x="0."    y="10."     z="0."/> <dof x="fixed" y="fixed" z="fixed"/> </node>
+      <node id="6">   <coord x="4.94"  y="-9.753"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="7">   <coord x="4.94"  y="-4.88"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="8">   <coord x="4.94"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="9">   <coord x="4.94"  y="4.88"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="10">  <coord x="4.94"  y="9.753"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="11">  <coord x="9.75"  y="-9.5125" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="12">  <coord x="9.75"  y="-4.76"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="13">  <coord x="9.75"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="14">  <coord x="9.75"  y="4.76"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="15">  <coord x="9.75"  y="9.5125"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="16">  <coord x="14.45" y="-9.2775" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="17">  <coord x="14.45" y="-4.64"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="18">  <coord x="14.45" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="19">  <coord x="14.45" y="4.64"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="20">  <coord x="14.45" y="9.2775"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="21">  <coord x="19.03" y="-9.0485" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="22">  <coord x="19.03" y="-4.52"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="23">  <coord x="19.03" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="24">  <coord x="19.03" y="4.52"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="25">  <coord x="19.03" y="9.0485"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="26">  <coord x="23.5"  y="-8.825"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="27">  <coord x="23.5"  y="-4.41"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="28">  <coord x="23.5"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="29">  <coord x="23.5"  y="4.41"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="30">  <coord x="23.5"  y="8.825"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="31">  <coord x="27.86" y="-8.607"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="32">  <coord x="27.86" y="-4.3"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="33">  <coord x="27.86" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="34">  <coord x="27.86" y="4.3"     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="35">  <coord x="27.86" y="8.607"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="36">  <coord x="32.11" y="-8.3945" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="37">  <coord x="32.11" y="-4.2"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="38">  <coord x="32.11" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="39">  <coord x="32.11" y="4.2"     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="40">  <coord x="32.11" y="8.3945"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="41">  <coord x="36.26" y="-8.187"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="42">  <coord x="36.26" y="-4.09"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="43">  <coord x="36.26" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="44">  <coord x="36.26" y="4.09"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="45">  <coord x="36.26" y="8.187"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="46">  <coord x="40.3"  y="-7.985"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="47">  <coord x="40.3"  y="-3.99"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="48">  <coord x="40.3"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="49">  <coord x="40.3"  y="3.99"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="50">  <coord x="40.3"  y="7.985"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="51">  <coord x="44.24" y="-7.788"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="52">  <coord x="44.24" y="-3.89"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="53">  <coord x="44.24" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="54">  <coord x="44.24" y="3.89"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="55">  <coord x="44.24" y="7.788"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="56">  <coord x="48.09" y="-7.5955" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="57">  <coord x="48.09" y="-3.8"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="58">  <coord x="48.09" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="59">  <coord x="48.09" y="3.8"     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="60">  <coord x="48.09" y="7.5955"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="61">  <coord x="51.84" y="-7.408"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="62">  <coord x="51.84" y="-3.7"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="63">  <coord x="51.84" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="64">  <coord x="51.84" y="3.7"     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="65">  <coord x="51.84" y="7.408"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="66">  <coord x="55.5"  y="-7.225"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="67">  <coord x="55.5"  y="-3.61"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="68">  <coord x="55.5"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="69">  <coord x="55.5"  y="3.61"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="70">  <coord x="55.5"  y="7.225"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="71">  <coord x="59.06" y="-7.047"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="72">  <coord x="59.06" y="-3.52"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="73">  <coord x="59.06" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="74">  <coord x="59.06" y="3.52"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="75">  <coord x="59.06" y="7.047"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="76">  <coord x="62.54" y="-6.873"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="77">  <coord x="62.54" y="-3.44"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="78">  <coord x="62.54" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="79">  <coord x="62.54" y="3.44"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="80">  <coord x="62.54" y="6.873"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="81">  <coord x="65.94" y="-6.703"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="82">  <coord x="65.94" y="-3.35"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="83">  <coord x="65.94" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="84">  <coord x="65.94" y="3.35"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="85">  <coord x="65.94" y="6.703"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="86">  <coord x="69.25" y="-6.5375" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="87">  <coord x="69.25" y="-3.27"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="88">  <coord x="69.25" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="89">  <coord x="69.25" y="3.27"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="90">  <coord x="69.25" y="6.5375"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="91">  <coord x="72.48" y="-6.376"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="92">  <coord x="72.48" y="-3.19"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="93">  <coord x="72.48" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="94">  <coord x="72.48" y="3.19"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="95">  <coord x="72.48" y="6.376"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="96">  <coord x="75.63" y="-6.2185" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="97">  <coord x="75.63" y="-3.11"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="98">  <coord x="75.63" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="99">  <coord x="75.63" y="3.11"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="100"> <coord x="75.63" y="6.2185"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="101"> <coord x="78.7"  y="-6.065"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="102"> <coord x="78.7"  y="-3.03"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="103"> <coord x="78.7"  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="104"> <coord x="78.7"  y="3.03"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="105"> <coord x="78.7"  y="6.065"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="106"> <coord x="81.69" y="-5.9155" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="107"> <coord x="81.69" y="-2.96"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="108"> <coord x="81.69" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="109"> <coord x="81.69" y="2.96"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="110"> <coord x="81.69" y="5.9155"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="111"> <coord x="84.61" y="-5.7695" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="112"> <coord x="84.61" y="-2.88"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="113"> <coord x="84.61" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="114"> <coord x="84.61" y="2.88"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="115"> <coord x="84.61" y="5.7695"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="116"> <coord x="87.46" y="-5.627"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="117"> <coord x="87.46" y="-2.81"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="118"> <coord x="87.46" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="119"> <coord x="87.46" y="2.81"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="120"> <coord x="87.46" y="5.627"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="121"> <coord x="90.24" y="-5.488"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="122"> <coord x="90.24" y="-2.74"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="123"> <coord x="90.24" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="124"> <coord x="90.24" y="2.74"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="125"> <coord x="90.24" y="5.488"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="126"> <coord x="92.95" y="-5.3525" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="127"> <coord x="92.95" y="-2.68"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="128"> <coord x="92.95" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="129"> <coord x="92.95" y="2.68"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="130"> <coord x="92.95" y="5.3525"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="131"> <coord x="95.59" y="-5.2205" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="132"> <coord x="95.59" y="-2.61"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="133"> <coord x="95.59" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="134"> <coord x="95.59" y="2.61"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="135"> <coord x="95.59" y="5.2205"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="136"> <coord x="98.17" y="-5.0915" z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="137"> <coord x="98.17" y="-2.55"   z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="138"> <coord x="98.17" y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="139"> <coord x="98.17" y="2.55"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="140"> <coord x="98.17" y="5.0915"  z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="141"> <coord x="100."  y="-5."     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="142"> <coord x="100."  y="-2.5"    z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="143"> <coord x="100."  y="0."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="144"> <coord x="100."  y="2.5"     z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+      <node id="145"> <coord x="100."  y="5."      z="0."/> <dof x="free"  y="free"  z="fixed"/> </node>
+   </nodes>
+   <materials>
+      <material id="Al_Alloy" type="IsotropicLinearElastic" rho="0.0028" E="710000." nu="0.3"/>
+      <material id="Steel" type="IsotropicLinearElastic" rho="0.0078" E="2000000." nu="0.3"/>
+   </materials>
+   <finite_elements>
+      <fe id="1"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1" nodes="1 2 7 6"/>
+      <fe id="2"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1" nodes="2 3 8 7"> </fe>
+      <fe id="3"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>3 4 9 8</nodes> </fe>
+      <fe id="4"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>4 5 10 9</nodes> </fe>
+      <fe id="5"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>6 7 12 11</nodes> </fe>
+      <fe id="6"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>7 8 13 12</nodes> </fe>
+      <fe id="7"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>8 9 14 13</nodes> </fe>
+      <fe id="8"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>9 10 15 14</nodes> </fe>
+      <fe id="9"   type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>11 12 17 16</nodes> </fe>
+      <fe id="10"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>12 13 18 17</nodes> </fe>
+      <fe id="11"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>13 14 19 18</nodes> </fe>
+      <fe id="12"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>14 15 20 19</nodes> </fe>
+      <fe id="13"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>16 17 22 21</nodes> </fe>
+      <fe id="14"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>17 18 23 22</nodes> </fe>
+      <fe id="15"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>18 19 24 23</nodes> </fe>
+      <fe id="16"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>19 20 25 24</nodes> </fe>
+      <fe id="17"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>21 22 27 26</nodes> </fe>
+      <fe id="18"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>22 23 28 27</nodes> </fe>
+      <fe id="19"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>23 24 29 28</nodes> </fe>
+      <fe id="20"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>24 25 30 29</nodes> </fe>
+      <fe id="21"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>26 27 32 31</nodes> </fe>
+      <fe id="22"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>27 28 33 32</nodes> </fe>
+      <fe id="23"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>28 29 34 33</nodes> </fe>
+      <fe id="24"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>29 30 35 34</nodes> </fe>
+      <fe id="25"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>31 32 37 36</nodes> </fe>
+      <fe id="26"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>32 33 38 37</nodes> </fe>
+      <fe id="27"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>33 34 39 38</nodes> </fe>
+      <fe id="28"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>34 35 40 39</nodes> </fe>
+      <fe id="29"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>36 37 42 41</nodes> </fe>
+      <fe id="30"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>37 38 43 42</nodes> </fe>
+      <fe id="31"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>38 39 44 43</nodes> </fe>
+      <fe id="32"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>39 40 45 44</nodes> </fe>
+      <fe id="33"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>41 42 47 46</nodes> </fe>
+      <fe id="34"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>42 43 48 47</nodes> </fe>
+      <fe id="35"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>43 44 49 48</nodes> </fe>
+      <fe id="36"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>44 45 50 49</nodes> </fe>
+      <fe id="37"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>46 47 52 51</nodes> </fe>
+      <fe id="38"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>47 48 53 52</nodes> </fe>
+      <fe id="39"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>48 49 54 53</nodes> </fe>
+      <fe id="40"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>49 50 55 54</nodes> </fe>
+      <fe id="41"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>51 52 57 56</nodes> </fe>
+      <fe id="42"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>52 53 58 57</nodes> </fe>
+      <fe id="43"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>53 54 59 58</nodes> </fe>
+      <fe id="44"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>54 55 60 59</nodes> </fe>
+      <fe id="45"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>56 57 62 61</nodes> </fe>
+      <fe id="46"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>57 58 63 62</nodes> </fe>
+      <fe id="47"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>58 59 64 63</nodes> </fe>
+      <fe id="48"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>59 60 65 64</nodes> </fe>
+      <fe id="49"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>61 62 67 66</nodes> </fe>
+      <fe id="50"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>62 63 68 67</nodes> </fe>
+      <fe id="51"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>63 64 69 68</nodes> </fe>
+      <fe id="52"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>64 65 70 69</nodes> </fe>
+      <fe id="53"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>66 67 72 71</nodes> </fe>
+      <fe id="54"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>67 68 73 72</nodes> </fe>
+      <fe id="55"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>68 69 74 73</nodes> </fe>
+      <fe id="56"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>69 70 75 74</nodes> </fe>
+      <fe id="57"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>71 72 77 76</nodes> </fe>
+      <fe id="58"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>72 73 78 77</nodes> </fe>
+      <fe id="59"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>73 74 79 78</nodes> </fe>
+      <fe id="60"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>74 75 80 79</nodes> </fe>
+      <fe id="61"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>76 77 82 81</nodes> </fe>
+      <fe id="62"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>77 78 83 82</nodes> </fe>
+      <fe id="63"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>78 79 84 83</nodes> </fe>
+      <fe id="64"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>79 80 85 84</nodes> </fe>
+      <fe id="65"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>81 82 87 86</nodes> </fe>
+      <fe id="66"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>82 83 88 87</nodes> </fe>
+      <fe id="67"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>83 84 89 88</nodes> </fe>
+      <fe id="68"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>84 85 90 89</nodes> </fe>
+      <fe id="69"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>86 87 92 91</nodes> </fe>
+      <fe id="70"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>87 88 93 92</nodes> </fe>
+      <fe id="71"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>88 89 94 93</nodes> </fe>
+      <fe id="72"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>89 90 95 94</nodes> </fe>
+      <fe id="73"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>91 92 97 96</nodes> </fe>
+      <fe id="74"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>92 93 98 97</nodes> </fe>
+      <fe id="75"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>93 94 99 98</nodes> </fe>
+      <fe id="76"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>94 95 100 99</nodes> </fe>
+      <fe id="77"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>96 97 102 101</nodes> </fe>
+      <fe id="78"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>97 98 103 102</nodes> </fe>
+      <fe id="79"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>98 99 104 103</nodes> </fe>
+      <fe id="80"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>99 100 105 104</nodes> </fe>
+      <fe id="81"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>101 102 107 106</nodes> </fe>
+      <fe id="82"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>102 103 108 107</nodes> </fe>
+      <fe id="83"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>103 104 109 108</nodes> </fe>
+      <fe id="84"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>104 105 110 109</nodes> </fe>
+      <fe id="85"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>106 107 112 111</nodes> </fe>
+      <fe id="86"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>107 108 113 112</nodes> </fe>
+      <fe id="87"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>108 109 114 113</nodes> </fe>
+      <fe id="88"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>109 110 115 114</nodes> </fe>
+      <fe id="89"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>111 112 117 116</nodes> </fe>
+      <fe id="90"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>112 113 118 117</nodes> </fe>
+      <fe id="91"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>113 114 119 118</nodes> </fe>
+      <fe id="92"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>114 115 120 119</nodes> </fe>
+      <fe id="93"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>116 117 122 121</nodes> </fe>
+      <fe id="94"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>117 118 123 122</nodes> </fe>
+      <fe id="95"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>118 119 124 123</nodes> </fe>
+      <fe id="96"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>119 120 125 124</nodes> </fe>
+      <fe id="97"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>121 122 127 126</nodes> </fe>
+      <fe id="98"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>122 123 128 127</nodes> </fe>
+      <fe id="99"  type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>123 124 129 128</nodes> </fe>
+      <fe id="100" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>124 125 130 129</nodes> </fe>
+      <fe id="101" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>126 127 132 131</nodes> </fe>
+      <fe id="102" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>127 128 133 132</nodes> </fe>
+      <fe id="103" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>128 129 134 133</nodes> </fe>
+      <fe id="104" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>129 130 135 134</nodes> </fe>
+      <fe id="105" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>131 132 137 136</nodes> </fe>
+      <fe id="106" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>132 133 138 137</nodes> </fe>
+      <fe id="107" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>133 134 139 138</nodes> </fe>
+      <fe id="108" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>134 135 140 139</nodes> </fe>
+      <fe id="109" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>136 137 142 141</nodes> </fe>
+      <fe id="110" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>137 138 143 142</nodes> </fe>
+      <fe id="111" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>138 139 144 143</nodes> </fe>
+      <fe id="112" type="MembraneQuad4Const" material="Al_Alloy" state="2D_strain" thickness=".1"> <nodes>139 140 145 144</nodes> </fe>
+      <fe id="113" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>1 6</nodes> </fe>
+      <fe id="114" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>6 11</nodes> </fe>
+      <fe id="115" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>11 16</nodes> </fe>
+      <fe id="116" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>16 21</nodes> </fe>
+      <fe id="117" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>21 26</nodes> </fe>
+      <fe id="118" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>26 31</nodes> </fe>
+      <fe id="119" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>31 36</nodes> </fe>
+      <fe id="120" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>36 41</nodes> </fe>
+      <fe id="121" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>41 46</nodes> </fe>
+      <fe id="122" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>46 51</nodes> </fe>
+      <fe id="123" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>51 56</nodes> </fe>
+      <fe id="124" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>56 61</nodes> </fe>
+      <fe id="125" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>61 66</nodes> </fe>
+      <fe id="126" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>66 71</nodes> </fe>
+      <fe id="127" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>71 76</nodes> </fe>
+      <fe id="128" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>76 81</nodes> </fe>
+      <fe id="129" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>81 86</nodes> </fe>
+      <fe id="130" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>86 91</nodes> </fe>
+      <fe id="131" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>91 96</nodes> </fe>
+      <fe id="132" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>96 101</nodes> </fe>
+      <fe id="133" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>101 106</nodes> </fe>
+      <fe id="134" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>106 111</nodes> </fe>
+      <fe id="135" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>111 116</nodes> </fe>
+      <fe id="136" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>116 121</nodes> </fe>
+      <fe id="137" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>121 126</nodes> </fe>
+      <fe id="138" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>126 131</nodes> </fe>
+      <fe id="139" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>131 136</nodes> </fe>
+      <fe id="140" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>136 141</nodes> </fe>
+      <fe id="141" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>5 10</nodes> </fe>
+      <fe id="142" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>10 15</nodes> </fe>
+      <fe id="143" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>15 20</nodes> </fe>
+      <fe id="144" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>20 25</nodes> </fe>
+      <fe id="145" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>25 30</nodes> </fe>
+      <fe id="146" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>30 35</nodes> </fe>
+      <fe id="147" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>35 40</nodes> </fe>
+      <fe id="148" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>40 45</nodes> </fe>
+      <fe id="149" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>45 50</nodes> </fe>
+      <fe id="150" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>50 55</nodes> </fe>
+      <fe id="151" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>55 60</nodes> </fe>
+      <fe id="152" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>60 65</nodes> </fe>
+      <fe id="153" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>65 70</nodes> </fe>
+      <fe id="154" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>70 75</nodes> </fe>
+      <fe id="155" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>75 80</nodes> </fe>
+      <fe id="156" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>80 85</nodes> </fe>
+      <fe id="157" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>85 90</nodes> </fe>
+      <fe id="158" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>90 95</nodes> </fe>
+      <fe id="159" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>95 100</nodes> </fe>
+      <fe id="160" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>100 105</nodes> </fe>
+      <fe id="161" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>105 110</nodes> </fe>
+      <fe id="162" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>110 115</nodes> </fe>
+      <fe id="163" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>115 120</nodes> </fe>
+      <fe id="164" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>120 125</nodes> </fe>
+      <fe id="165" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>125 130</nodes> </fe>
+      <fe id="166" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>130 135</nodes> </fe>
+      <fe id="167" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>135 140</nodes> </fe>
+      <fe id="168" type="Rod2Const" material="Steel" state="1D_strain" cross-sec_area="1."> <nodes>140 145</nodes> </fe>
+   </finite_elements>
+</model>
+<loads>
+   <loadcase id="lateral bending">
+      <force type="Static" node="141" x="0." y="787.5" z="0."/>
+      <force type="Static" node="142" x="0." y="1575." z="0."/>
+      <force type="Static" node="143" x="0." y="1575." z="0."/>
+      <force type="Static" node="144" x="0." y="1575." z="0."/>
+      <force type="Static" node="145" x="0." y="787.5" z="0."/>
+   </loadcase>
+</loads>
+<analyses>
+   <analysis type="LinearElastic" id="linear1" eval_per_fe="average" loadcase="lateral bending" model="" outputfile="">
+      <minprofile useprev="0" profmin="2" prologmin="0" depth="6"/>
+   </analysis>
+</analyses>
+</obormot_data>
+
