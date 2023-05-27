@@ -1,45 +1,52 @@
+// Author: Chekhov Vladimir Valerevich
+
 /* Numerical integration of an arbitrary function
-over the n-dimensional cube [-1..1] by the Gauss quadrature
-(n-dimensional array of the gauss coefficients is previously flatten to the one-dim array to be
-processed by one cycle/std.algo/unrolled cycle)
+   over the n-dimensional cube [-1..1] by the Gauss quadrature
+   (n-dimensional array of the gauss coefficients is previously flatten to the one-dim array to be
+   processed by one cycle/std.algo/unrolled cycle)
+   --------------------------------------------------------------------------
+	  Author: Vladimir Chekhov (http://vch.crimea.ua)
+   This code is described in: the paper submitted to ZNU Herald
+   (http://web.znu.edu.ua/cms/index.php?action=category/browse&site_id=5&lang=eng&category_id=1146)
+   Version of Sept 14, 2013
+   --------------------------------------------------------------------------
+	Template parameters:
+	-------------------
+	int ORD - order of the quadrature (must be >1)
+	int DIM - space dimension (must be >0)
+	typename FUNC -  integrand
+	typedef real_t   -  real numbers type
 
-Author: Vladimir V. Chekhov (http://vch.crimea.ua)
-This code is described in: the paper submitted to ZNU Herald
-(http://web.znu.edu.ua/cms/index.php?action=category/browse&site_id=5&lang=eng&category_id=1146)
-Version of Sept 14, 2013
-
-		Template parameters:
-		-
-		int ORD - order of the quadrature (must be >1)
-		int DIM - space dimension (must be >0)
-		typename FUN - integrand
-
-		Control parameters:
-
-CYCLE_INSTEAD_OF_STD_ALGO - if defined then cycles are used else std.algo
-UNROLL_LOOPS_LIMIT - minimal array size to process by the cycle/std.algo (else by unrolled cycle)
-NESTED_CYCLE_FOR_DIM_LESS_THAN_4 - if defined then ordinary nested cycles are used for dimensions
-1-3
+	Control parameters:
+	------------------
+   CYCLE_INSTEAD_OF_STD_ALGO   -   if defined then cycles are used else std.algo
+   UNROLL_LOOPS_LIMIT      -  minimal array size to process by the cycle/std.algo (else by unrolled
+   cycle) NESTED_CYCLE_FOR_DIM_LESS_THAN_4  -  if defined then ordinary nested cycles are used for
+   dimensions 1-3
 */
-
-#pragma once
-
-#include "NumTypes.hpp"
-#ifdef STRONGCHECK
-#include "ThrowMessage.hpp"
-#endif
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+#ifndef GaussCoefH
+#define GaussCoefH
+//---------------------------------------------------------------------------
 #include <algorithm>
 #include <numeric>
 #include <cmath>
-
+//---------------------------------------------------------------------------
+namespace GaussIntegr
+{
+typedef double real_t;
+//---------------------------------------------------------------------------
 //#define NESTED_CYCLE_FOR_DIM_LESS_THAN_4
 //#define CYCLE_INSTEAD_OF_STD_ALGO
-
-// Calculation of coefficients of Gauss quadrarure
-
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//---------------Calculation of coefficients of Gauss quadrarure-------------
+//---------------------------------------------------------------------------
 real_t GaussX(int ord_, int num_, int newton_steps_);
 real_t GaussW(int ord_, real_t x_);
-
+//---------------------------------------------------------------------------
 template <int ORD>
 struct GaussCoef1D	// values of gauss coefficients for all orders - by newton-raphson's iters
 {
@@ -68,7 +75,7 @@ public:
 	{
 		return GaussW(ORD, x(i_));
 	}  // is necessary for rolled fInitGaussCoeffsArray
-};
+};	   //---------------------
 template <>
 struct GaussCoef1D<1>  // specialization of explicit constant values for orders 1-5
 {
@@ -90,7 +97,7 @@ struct GaussCoef1D<1>  // specialization of explicit constant values for orders 
 	{
 		return w<0>();
 	}
-};
+};	//---------------------
 template <>
 struct GaussCoef1D<2>
 {
@@ -136,7 +143,7 @@ inline real_t GaussCoef1D<2>::w(int)
 {
 	return w<0>();
 }
-
+//---------------------
 template <>
 struct GaussCoef1D<3>
 {
@@ -202,7 +209,7 @@ inline real_t GaussCoef1D<3>::w(int i_)
 {
 	return i_ == 0 ? w<0>() : i_ == 1 ? w<1>() : w<2>();
 }
-
+//---------------------
 template <>
 struct GaussCoef1D<4>
 {
@@ -280,7 +287,7 @@ inline real_t GaussCoef1D<4>::w(int i_)
 {
 	return i_ == 0 ? w<0>() : i_ == 1 ? w<1>() : i_ == 2 ? w<2>() : w<3>();
 }
-
+//---------------------
 template <>
 struct GaussCoef1D<5>
 {
@@ -370,7 +377,8 @@ inline real_t GaussCoef1D<5>::w(int i_)
 {
 	return i_ == 0 ? w<0>() : i_ == 1 ? w<1>() : i_ == 2 ? w<2>() : i_ == 3 ? w<3>() : w<4>();
 }
-
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 template <int DIM>
 struct IntegrCoef  // dataStruct for one point for numerical integration of arbitrary dimension and
 				   // order
@@ -392,12 +400,6 @@ struct IntegrCoef  // dataStruct for one point for numerical integration of arbi
 	}
 	real_t coord(int i_) const
 	{  // 1-x, 2-y, 3-z, 4-...
-#ifdef STRONGCHECK
-		Assert(
-			i_ > 0 && i_ <= DIM,
-			tMessage("invalid coordinate index=")
-				<< i_ << "must be>0 and <=" << DIM << " in IntegrCoef<DIM>::coord(int): ");
-#endif
 		return wxyz[i_];
 	}
 	real_t weight() const
@@ -405,7 +407,7 @@ struct IntegrCoef  // dataStruct for one point for numerical integration of arbi
 		return wxyz[0];
 	}
 };
-
+//---------------------------------------------------------------------------
 template <int M, int N>
 struct Pow
 {
@@ -422,61 +424,30 @@ struct Pow<M, 1>
 		result = M
 	};
 };
-
-/*template <int DIM, int ORD, int I_=ORD>
-struct fSetAllCoeff // развёртка цикла
-{
-// void operator()(IntegrCoef<DIM>* coeffs_) const
- static void Do(IntegrCoef<DIM>* coeffs_)
-	{//fSetAllCoeff<DIM,ORD,I_-1>()(coeffs_);
-	 fSetAllCoeff<DIM,ORD,I_-1>::Do(coeffs_);
-	 fInitGaussCoeffsArray<DIM-1,ORD>::Do(coeffs_+(I_-1)*Pow<ORD,DIM-1>::result,GaussCoef1D<ORD>::w<I_-1>(),GaussCoef1D<ORD>::x<I_-1>());
-//
-fInitGaussCoeffsArray<DIM-1,ORD>::Do(coeffs_+=(I_-1)*Pow<ORD,DIM-1>::result,GaussCoef1D<ORD>::w<I_-1>(),GaussCoef1D<ORD>::x<I_-1>());
-	}
-};
-template <int DIM, int ORD>  struct fSetAllCoeff<DIM,ORD,0>
-//{ void operator()(IntegrCoef<DIM>*) const {} };
-{ static void Do(IntegrCoef<DIM>*) {} };
-
-template <int DIM, int DIM1, int ORD, int I_=ORD>
-struct fSetAllCoeff2 // развёртка цикла
-{
- void operator()(IntegrCoef<DIM1>* coeffs_, real_t w_on_y_, real_t next_coord_component_) const
-	{fSetAllCoeff2<DIM,DIM1,ORD,I_-1>()(coeffs_,w_on_y_,next_coord_component_);
-	 for (IntegrCoef<DIM1>* p=coeffs_; p<coeffs_+Pow<ORD,DIM-1>::result; ++p)
-			(*p)[DIM+1] = next_coord_component_;
-	 fInitGaussCoeffsArray<DIM-1,ORD>::Do(coeffs_+=(I_-1)*Pow<ORD,DIM-1>::result,GaussCoef1D<ORD>::w<I_-1>()*w_on_y_,GaussCoef1D<ORD>::x<I_-1>());
-	}
-};
-template <int DIM, int DIM1, int ORD>  struct fSetAllCoeff2<DIM,DIM1,ORD,0>
-{ void operator()(IntegrCoef<DIM1>*,real_t,real_t) const {} };*/
-
+//---------------------------------------------------------------------------
 template <int DIM, int ORD>
 struct fInitGaussCoeffsArray  // initialization of array of Gauss coefficients for any order and
 							  // dimension
 {
 	static void Do(IntegrCoef<DIM>* coeffs_)
 	{
-		//     fSetAllCoeff<DIM,ORD,ORD>::Do(coeffs_);
-		for (small_t i = 0; i < ORD; ++i, coeffs_ += Pow<ORD, DIM - 1>::result)
+		for (int i = 0; i < ORD; ++i, coeffs_ += Pow<ORD, DIM - 1>::result)
 			fInitGaussCoeffsArray<DIM - 1, ORD>::Do(
 				coeffs_, GaussCoef1D<ORD>::w(i), GaussCoef1D<ORD>::x(i));
 	}
 	template <int DIM1>	 // nontemplate DIM1=DIM+1 is sufficient if DIM <= 3
 	static void Do(IntegrCoef<DIM1>* coeffs_, real_t w_on_y_, real_t next_coord_component_)
 	{
-		//     fSetAllCoeff2<DIM,DIM1,ORD,ORD>()(coeffs_,w_on_y_,next_coord_component_);
-		for (small_t i = 0; i < ORD; ++i)
+		for (int i = 0; i < ORD; ++i)
 		{
 			fInitGaussCoeffsArray<DIM - 1, ORD>::Do(
 				coeffs_, GaussCoef1D<ORD>::w(i) * w_on_y_, GaussCoef1D<ORD>::x(i));
-			for (small_t j = 0; j < Pow<ORD, DIM - 1>::result; ++j, ++coeffs_)
+			for (int j = 0; j < Pow<ORD, DIM - 1>::result; ++j, ++coeffs_)
 				(*coeffs_)[DIM + 1] = next_coord_component_;
 		}
 	}
 };
-
+//---------------------------------------------------------------------------
 template <int ORD, int I_>
 struct fInitGaussCoeffsArray1D
 {
@@ -494,7 +465,7 @@ struct fInitGaussCoeffsArray1D<ORD, 0>
 	{
 	}
 };
-
+//---------------------------------------------------------------------------
 template <int ORD, int DIM, int I_ = ORD>
 struct fInitGaussCoeffsSlice
 {
@@ -513,7 +484,7 @@ struct fInitGaussCoeffsSlice<ORD, DIM, 0>
 	{
 	}
 };
-
+//---------------------------------------------------------------------------
 template <int ORD>
 struct fInitGaussCoeffsArray<1, ORD>
 {
@@ -528,13 +499,15 @@ struct fInitGaussCoeffsArray<1, ORD>
 	}
 };
 
-// Integrating:
-// Adapter for subintegrand to convert any function one arg of type const real_t*
-// due to array of gauss coefs has type real_t[]
+//---------------------------------------------------------------------------
+//--------------------Integrating:-------------------------------------------
+//---------------------------------------------------------------------------
 
+//------- Adapter for subintegrand to convert any function one arg of type const real_t*
+//------- due to array of gauss coefs has type real_t[]
 template <int DIM, typename Targ, typename Tresult, typename FUN>
 struct fFunArgAdapter;	//    Tresult FUN(Targ) --> Tresult FUN(const real_t*)
-
+//-----
 template <typename Targ, typename Tresult, typename FUN>
 struct fFunArgAdapter<1, Targ, Tresult, FUN>
 {
@@ -549,7 +522,7 @@ struct fFunArgAdapter<1, Targ, Tresult, FUN>
 		return f(coord);
 	}
 };
-
+//-----
 template <typename Tresult, typename FUN>
 struct fFunArgAdapter<1, real_t, Tresult, FUN>
 {
@@ -562,7 +535,7 @@ struct fFunArgAdapter<1, real_t, Tresult, FUN>
 		return f(args_[0]);
 	}
 };
-
+//-----
 template <typename Targ, typename Tresult, typename FUN>
 struct fFunArgAdapter<2, Targ, Tresult, FUN>
 {
@@ -578,7 +551,20 @@ struct fFunArgAdapter<2, Targ, Tresult, FUN>
 		return f(coord);
 	}
 };
-
+//-----
+template <typename Tresult, typename FUN>
+struct fFunArgAdapter<2, real_t, Tresult, FUN>
+{
+	FUN f;
+	fFunArgAdapter(FUN f_) : f(f_)
+	{
+	}
+	Tresult operator()(const real_t* args_) const
+	{
+		return f(args_[0], args_[1]);
+	}
+};
+//-----
 template <typename Targ, typename Tresult, typename FUN>
 struct fFunArgAdapter<3, Targ, Tresult, FUN>
 {
@@ -595,9 +581,9 @@ struct fFunArgAdapter<3, Targ, Tresult, FUN>
 		return f(coord);
 	}
 };
-
+//-----
 template <typename Tresult, typename FUN>
-struct fFunArgAdapter<2, real_t, Tresult, FUN>
+struct fFunArgAdapter<3, real_t, Tresult, FUN>
 {
 	FUN f;
 	fFunArgAdapter(FUN f_) : f(f_)
@@ -605,18 +591,18 @@ struct fFunArgAdapter<2, real_t, Tresult, FUN>
 	}
 	Tresult operator()(const real_t* args_) const
 	{
-		return f(args_[0], args_[1]);
+		return f(args_[0], args_[1], args_[2]);
 	}
 };
-// adapter-function to implicitly define types of template arguments
+//------------ adapter-function to implicitly define types of template arguments
 template <int DIM, typename Targ, typename Tresult, typename FUN>
 fFunArgAdapter<DIM, Targ, Tresult, FUN> AdaptArgsToArray(FUN f_)
 {
 	return fFunArgAdapter<DIM, Targ, Tresult, FUN>(f_);
 }
-
-// functional objects to be used in algorithms
-
+//---------------------------------------------------------------------
+//-----------functional objects to be used in algorithms---------------
+//---------------------------------------------------------------------
 template <typename FUN>
 struct fweighted_plus
 {
@@ -636,7 +622,7 @@ inline fweighted_plus<FUN> weighted_plus(FUN f_)
 {
 	return fweighted_plus<FUN>(f_);
 }
-
+//---------------------------------------------------------------------
 template <typename T, typename FUN>
 struct fweighted_plus_with_assgn
 {
@@ -647,7 +633,7 @@ struct fweighted_plus_with_assgn
 	}
 	template <int DIM>
 	void operator()(const IntegrCoef<DIM>& coef_) const
-	//     {  result  +=  f(coef_.coord()) * coef_.weight(); } // чомусь не робе пiд g++
+	//     {  result  +=  f(coef_.coord()) * coef_.weight(); } // С‡РѕРјСѓСЃСЊ РЅРµ СЂРѕР±Рµ РїiРґ g++
 	{
 		T funret = f(coef_.coord());
 		funret *= coef_.weight();
@@ -659,13 +645,13 @@ inline fweighted_plus_with_assgn<T, FUN> weighted_plus_with_assgn(FUN f_, T& res
 {
 	return fweighted_plus_with_assgn<T, FUN>(f_, result0_);
 }
-
-// Unrolled algorithms
-
+//---------------------------------------------------------------------
+//-----------Unrolled algorithms---------------------------------------
+//---------------------------------------------------------------------
 #ifndef UNROLL_LOOPS_LIMIT
 #define UNROLL_LOOPS_LIMIT 10
 #endif
-
+//---------------------------------------------------------------------
 template <typename T, int I_, typename Tret, typename FUN>
 struct fAccumulate_unrolled
 {
@@ -675,24 +661,24 @@ struct fAccumulate_unrolled
 			fAccumulate_unrolled<T, I_ - 1, Tret, FUN>::Do(BEGIN_, prev_sum_, fun_),
 			*(BEGIN_ + I_ - 1));
 	}
-};
+};	//--------------
 template <typename T, typename Tret, typename FUN>
 struct fAccumulate_unrolled<T, 0, Tret, FUN>
 {
-	static Tret Do(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
+	static Tret Do(const T* /*BEGIN_*/, const Tret& prev_sum_, FUN /*fun_*/)
 	{
 		return prev_sum_;
 	}
-};
+};	//--------------
 template <int I_, typename Tret, typename T, typename FUN>
 inline Tret Accumulate_unrolled(const T* BEGIN_, const Tret& prev_sum_, FUN fun_)
 {
 	return fAccumulate_unrolled<T, I_, Tret, FUN>::Do(BEGIN_, prev_sum_, fun_);
 }
-
+//---------------------------------------------------------------------
 template <bool ARRAY_IS_BIG>
 struct fRunAccumulate;
-
+//-------
 template <>
 struct fRunAccumulate<true>
 {
@@ -710,7 +696,7 @@ struct fRunAccumulate<true>
 		return sum0_;
 	}
 #endif
-};
+};	//-------
 template <>
 struct fRunAccumulate<false>
 {
@@ -720,7 +706,7 @@ struct fRunAccumulate<false>
 		return Accumulate_unrolled<TArray::size, Tret>(arr_.begin(), sum0_, f_);
 	}
 };
-
+//---------------------------------------------------------------------
 template <typename T, int I_, typename FUN>
 struct fForEach_unrolled
 {
@@ -729,7 +715,7 @@ struct fForEach_unrolled
 		fForEach_unrolled<T, I_ - 1, FUN>::Do(BEGIN_, fun_);
 		fun_(*(BEGIN_ + I_ - 1));
 	}
-};
+};	//--------------
 template <typename T, typename FUN>
 struct fForEach_unrolled<T, 0, FUN>
 {
@@ -737,16 +723,16 @@ struct fForEach_unrolled<T, 0, FUN>
 	{
 	}
 };
-
+//--------------
 template <int I_, typename T, typename FUN>
 inline void ForEach_unrolled(const T* BEGIN_, FUN fun_)
 {
 	fForEach_unrolled<T, I_, FUN>::Do(BEGIN_, fun_);
 }
-
+//---------------------------------------------------------------------
 template <bool ARRAY_IS_BIG>
 struct fRunForEach;
-
+//-------
 template <>
 struct fRunForEach<true>
 {
@@ -755,7 +741,7 @@ struct fRunForEach<true>
 	{
 		std::for_each(arr_.begin(), arr_.end(), f_);
 	}
-};
+};	//-------
 template <>
 struct fRunForEach<false>
 {
@@ -765,7 +751,9 @@ struct fRunForEach<false>
 		ForEach_unrolled<TArray::size>(arr_.begin(), f_);
 	}
 };
-
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
 template <int DIM, int ORD>
 struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integration
 {
@@ -788,32 +776,30 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integ
 	{
 		return Coeffs + size;
 	}
+	//-------
 	template <typename Tret, typename FUN>
 	Tret ByPlus_ArrArg(FUN f_) const
 	{
 		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(*this, Tret(0.), weighted_plus(f_));
-	}
+	}  //-------
 	template <typename Tret, typename FUN>
 	Tret& ByPlusAssgn_ArrArg(FUN f_, Tret& result_) const
 	{
 #ifndef CYCLE_INSTEAD_OF_STD_ALGO
 		fRunForEach<(size >= UNROLL_LOOPS_LIMIT)>::Do(*this, weighted_plus_with_assgn(f_, result_));
 #else
+		Tret tmp;
 		for (const IntegrCoef<DIM>* p = begin(); p < end(); ++p)
-			result_ += f_(p->coord()) *= p->weight();
+			result_ += (tmp = f_(p->coord())) *= p->weight();
 #endif
-		//    for (const IntegrCoef<DIM>* p=cfbegin_; p<cfend_; ++p)
-		//       result_ +=  f_(p->coord()) *= p->weight();
-		//   std::for_each(begin(),end(),weighted_plus_with_assgn(f_,result_));
-		//   ForEach_unrolled<size>(begin(),weighted_plus_with_assgn(f_,result_));
 		return result_;
-	}
+	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
 		return fRunAccumulate<(size >= UNROLL_LOOPS_LIMIT)>::Do(
 			*this, Tret(0.), weighted_plus(AdaptArgsToArray<DIM, Targ, Tret>(f_)));
-	}
+	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
@@ -827,9 +813,10 @@ struct fIntegrate  // 1D-array of Gauss coefs for any dimension/order with integ
 			result_ += ((f_from_coord = f(p->coord())) *= p->weight());
 #endif
 		return result_;
-	}
+	}  //-------
 };
-
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
 #ifdef NESTED_CYCLE_FOR_DIM_LESS_THAN_4
 template <int ORD>
 struct fIntegrate<1, ORD>
@@ -840,13 +827,19 @@ struct fIntegrate<1, ORD>
 	{
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
+	//-------
+	/* template <typename Targ, typename Tret, typename FUN>
+	 Tret ByPlus_ArrArg(FUN f_) const
+		 {
+		 }//-------
+	*/
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
 		Tret result(0.);
 		for (int i = 0; i < ORD; ++i) result = result + f_(Coeffs[i].coord(1)) * Coeffs[i].weight();
 		return result;
-	}
+	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
@@ -862,7 +855,7 @@ struct fIntegrate<1, ORD>
 		return result_;
 	}
 };
-
+//---------------------------------------------------------------------
 template <int ORD>
 struct fIntegrate<2, ORD>
 {
@@ -872,6 +865,7 @@ struct fIntegrate<2, ORD>
 	{
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
+	//-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
@@ -885,7 +879,7 @@ struct fIntegrate<2, ORD>
 									  Coeffs[i].coord(1), Coeffs[j].coord(1)) *
 									  Coeffs[i].weight() * Coeffs[j].weight();
 		return result;
-	}
+	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
@@ -898,34 +892,15 @@ struct fIntegrate<2, ORD>
 			{
 				arg[1] = Coeffs[j].coord(1);
 				/*       tmp = f_(arg);
-					   tmp *= (Coeffs[i].weight()*Coeffs[j].weight());   // = error
-					   result_ += tmp;*/
+							 tmp *= (Coeffs[i].weight()*Coeffs[j].weight());   // = error
+							 result_ += tmp;*/
 				result_ += (f_(arg) *= (Coeffs[i].weight() * Coeffs[j].weight()));
 			}
 		}
 		return result_;
-	}
+	}  //-------
 };
-
-/*template <int ORD>// sample from mooney_fem
-struct fIntegr2D
-{
- IntegrCoef<1> coeffs[ORD];
- fIntegr2D()  { fInitGaussCoeffsArray<1,ORD>::Do(coeffs); }
-
- template <typename Tres, typename FUN>
- Tres& ByPlusAssgn(FUN f_, Tres& result_)
-  {
-   for (int i=0, j; i<ORD; ++i)
-	for (j=0; j<ORD; ++j)
-	 {
-	  result_ += (f_(coeffs[i].coord(1),coeffs[j].coord(1)) * (coeffs[i].weight() *
-coeffs[j].weight()));
-	 }
-   return result_;
- }
-};*/
-
+//---------------------------------------------------------------------
 template <int ORD>
 struct fIntegrate<3, ORD>
 {
@@ -935,6 +910,7 @@ struct fIntegrate<3, ORD>
 	{
 		fInitGaussCoeffsArray<1, ORD>::Do(Coeffs);
 	}
+	//-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret ByPlus(FUN f_) const
 	{
@@ -950,7 +926,7 @@ struct fIntegrate<3, ORD>
 									 Coeffs[i].coord(1), Coeffs[j].coord(1), Coeffs[k].coord(1)) *
 									 Coeffs[i].weight() * Coeffs[j].weight() * Coeffs[k].weight();
 		return result;
-	}
+	}  //-------
 	template <typename Targ, typename Tret, typename FUN>
 	Tret& ByPlusAssgn(FUN f_, Tret& result_) const
 	{
@@ -975,114 +951,9 @@ struct fIntegrate<3, ORD>
 			}
 		}
 		return result_;
-	}
+	}  //-------
 };
-
+//---------------------------------------------------------------------------
 #endif	// NESTED_CYCLE_FOR_DIM_LESS_THAN_4
-//
-// Set of 1D-arrays of Gauss coefs for any dimension and all possible
-// orders (dynamic switching) with integration
-//
-// template <int DIM, int MAXORD>
-// struct fIntegrateAllOrds_core: public fIntegrateAllOrds_core<DIM,MAXORD-1>, public
-// fIntegrate<DIM,MAXORD>
-//{
-// int Size(int ord_) const
-//   {return pow(float(ord_),DIM);}
-// const IntegrCoef<DIM>* begin(int ord_) const
-//   {return ord_ == MAXORD ? fIntegrate<DIM,MAXORD>::begin() :
-//   fIntegrateAllOrds_core<DIM,MAXORD-1>::begin(ord_);}
-// const IntegrCoef<DIM>* end(int ord_) const
-//   {return begin(ord_) + Size(ord_);}
-//
-// template <typename Targ, typename Tret, typename FUN>
-// Tret ByPlus(int ord_, FUN f_) const
-//   {
-//    #ifdef STRONGCHECK
-//     Assert(ord_>0 && ord_<=MAXORD, "integration order exceeds max allowable value in
-//     fIntegrateAllOrds_core<DIM,MAXORD>::IntByPlus(int,FUN)");
-//    #endif
-//    return ord_ == MAXORD  ?  fIntegrate<DIM,MAXORD>::ByPlus<Targ/*gcc error: expected
-//    primary-expression before ","*/,Tret/*gcc error: expected primary-expression before ">"*/>(f_)
-//                           :  fIntegrateAllOrds_core<DIM,MAXORD-1>::ByPlus<Targ/*gcc error:
-//                           expected primary-expression before ","*/,Tret/*gcc error: expected
-//                           primary-expression before ">"*/>(ord_,f_);
-//   }
-//
-// template <typename Targ, typename Tret, typename FUN>
-// Tret& ByPlusAssgn(int ord_, FUN f_, Tret& result_) const
-//   {
-//    #ifdef STRONGCHECK
-//     Assert(ord_>0 && ord_<=MAXORD, "integration order exceeds max allowable value in
-//     fIntegrateAllOrds_core<DIM,MAXORD>::IntByPlusAssgn(int,FUN,Tret&)");
-//    #endif
-//    return ord_ == MAXORD  ?  fIntegrate<DIM,MAXORD>::ByPlusAssgn<Targ/*gcc error: expected
-//    primary-expression before ">"*/>(f_,result_)
-//                           :  fIntegrateAllOrds_core<DIM,MAXORD-1>::ByPlusAssgn<Targ/*gcc error:
-//                           expected primary-expression before ">"*/>(ord_,f_,result_);
-//   }
-//};
-//
-// template <int DIM>
-// struct fIntegrateAllOrds_core<DIM,1>: public fIntegrate<DIM,1>
-//{
-// int Size(int) const {return 1;}
-// const IntegrCoef<DIM>* begin(int) const
-//   {return fIntegrate<DIM,1>::begin();}
-// const IntegrCoef<DIM>* end(int) const
-//   {return fIntegrate<DIM,1>::begin() + 1;}
-//
-// template <typename Targ, typename Tret, typename FUN>
-// Tret ByPlus(int, FUN f_) const
-//   {
-//    return fIntegrate<DIM,1>::ByPlus<Targ,Tret>(f_); // gcc errors: expected primary-expression
-//    before ",",  expected primary-expression before ">"
-//   }
-// template <typename Targ, typename Tret, typename FUN>
-// Tret& ByPlusAssgn(int, FUN f_, Tret& result_) const
-//   {
-//    return fIntegrate<DIM,1>::ByPlusAssgn<Targ>(f_,result_); // gcc error: expected
-//    primary-expression before ">"
-//   }
-//};
-//
-// template <int DIM, int MAXORD>
-// struct fIntegrateAllOrds: public fIntegrateAllOrds_core<DIM,MAXORD>
-//{
-//// small_t CurrentOrder;
-// const IntegrCoef<DIM> *CurrentBegin, *CurrentEnd;
-// void SetOrder(small_t ord_)
-//    {
-//     #ifdef STRONGCHECK
-//      Assert(ord_>0 && ord_<=MAXORD,"Improper gauss order in fIntegrateAllOrds::SetOrder");
-//     #endif
-////     CurrentOrder = ord_;
-//     CurrentBegin = fIntegrateAllOrds_core<DIM,MAXORD>::begin(ord_);
-//     CurrentEnd = fIntegrateAllOrds_core<DIM,MAXORD>::end(ord_);
-//    }
-// fIntegrateAllOrds(int ord_=MAXORD) {SetOrder(ord_);}
-//
-// template <typename Targ, typename Tret, typename FUN>
-// Tret ByPlus_ArrArg_algo(FUN f_) const
-//   {
-//    return std::accumulate(CurrentBegin,CurrentEnd,Tret(0.),weighted_plus(f_));
-//   }
-// template <typename Targ, typename Tret, typename FUN>
-// Tret ByPlus_algo(FUN f_) const
-//   {
-//    return
-//    std::accumulate(CurrentBegin,CurrentEnd,Tret(0.),weighted_plus(AdaptArgsToArray<DIM,Targ,Tret>(f_)));
-//   }
-// template <typename Targ, typename Tret, typename FUN>
-// Tret& ByPlusAssgn_ArrArg_algo(FUN f_, Tret& result_) const
-//   {
-//    std::for_each(CurrentBegin,CurrentEnd,weighted_plus_with_assgn(f_,result_));
-//    return result_;
-//   }
-// template <typename Targ, typename Tret, typename FUN>
-// Tret& ByPlusAssgn_algo(FUN f_, Tret& result_) const
-//   {
-//    std::for_each(CurrentBegin,CurrentEnd,weighted_plus_with_assgn(AdaptArgsToArray<DIM,Targ,Tret>(f_),result_));
-//    return result_;
-//   }
-//};
+}  // namespace GaussIntegr
+#endif

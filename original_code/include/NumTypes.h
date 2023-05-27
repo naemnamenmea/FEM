@@ -1,11 +1,12 @@
 #pragma once
 
-#ifdef STRONGCHECK
-#include "ThrowMessage.hpp"
+#ifndef STRONGCHECK
+//#define STRONGCHECK// for debugging
+//#include "ThrowMessage.h"
 #endif
 
 #include <cmath>
-#include <cstddef>	//nullptr
+#include <cstddef>	//NULL
 
 #if defined __BORLANDC__ && __BORLANDC__ >= 0x550
 using std::acos;
@@ -31,9 +32,9 @@ using std::sqrt;
 using std::tan;
 using std::tanh;
 #endif	//__BORLANDC__
-
-// Settings for compilation
-
+//---------------------------------------------------------------------------
+//----------------Settings for compilation-----------------------------------
+//---------------------------------------------------------------------------
 #ifndef GAUSS_ORDER_1D
 #define GAUSS_ORDER_1D 3
 #endif
@@ -46,27 +47,30 @@ using std::tanh;
 #ifndef UNROLL_LOOPS_LIMIT
 #define UNROLL_LOOPS_LIMIT 0
 #endif
-
-// Aliases for numeric types
-
-typedef double real_t;
+//---------------------------------------------------------------------------
+//----------------Aliases for numeric types----------------------------------
+//---------------------------------------------------------------------------
+typedef double __real_t;
+typedef unsigned int cardinal_t;
 typedef unsigned short int small_t;
-
-//       real_t abs  (real_t);
-inline real_t sign(real_t x_)
+//---------------------------------------------------------------------------
+template<typename T>
+inline T sign(const T x_)
 {
-	return x_ < 0. ? -1. : 1.;
+	return x_ < 0 ? -1 : 1;
 }
-inline real_t sign(real_t y_, real_t x_)
+template<typename T>
+inline T sign(const T y_, const T x_)
 {
-	return x_ < 0. ? -y_ : y_;
+	return x_ < 0 ? -y_ : y_;
 }
-
-// functionals for for_each
-
+//---------------------------------------------------------------------------
+//-----------functionals for for_each-------------------------------------------
+//------------------------------------------------------------------------------
 template <typename T>
 struct address_is
 {
+	const T* const m_address;
 	address_is(const T& ref_) : m_address(&ref_)
 	{
 	}
@@ -78,8 +82,6 @@ struct address_is
 		return m_address == &ref_;
 	}
 	// bool operator()(const T* ptr_) const {return address == ptr_;}
-
-	const T* const m_address;
 };
 
 template <typename T>
@@ -88,13 +90,14 @@ struct fDelete_object
 	void operator()(T*& p_) const
 	{
 		delete p_;
-		p_ = nullptr;
+		p_ = NULL;
 	}
 };
 
 template <typename T1, typename T2>
 struct fMilt
 {
+	const T2 m_value;
 	fMilt(T2 v_) : m_value(v_)
 	{
 	}
@@ -102,6 +105,4 @@ struct fMilt
 	{
 		o_ *= m_value;
 	}
-
-	const T2 m_value;
 };
